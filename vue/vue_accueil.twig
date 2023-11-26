@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ISI WEB 4 SHOP</title>
+        <meta charset='UTF-8'>
+    </head>
+    
+    <body>
+        <h1>Main page</h1>
+        <p>Bienvenue sur le site</p>
+
+        <table>
+            <thead>
+                <tr><th>Titre</th><th>Auteur</th></tr>
+            </thead>
+            <tbody>
+            {% for item in biblio|sort %}
+            <tr>
+                <td>{{ item.titre }}</td>
+                <td>{{ item.nom|capitalize }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
