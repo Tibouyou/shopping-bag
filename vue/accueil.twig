@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ISI WEB 4 SHOP</title>
+        <meta charset='UTF-8'>
+    </head>
+    
+    <body>
+        <h1>Main page</h1>
+        <p>Bienvenue sur le site</p>
+        <h1>Products</h1>
+        <ul>
+            {% for item in products|sort((a, b) => a.name <=> b.name) %}
+                <li>{{ item.name }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

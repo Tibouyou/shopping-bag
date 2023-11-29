@@ -1,8 +1,6 @@
 <?php
 
-/* récupérer le tableau des données */
 require 'models/model.php';
-$donnees = getData();
 
 /* inclure l'autoloader */
 require_once 'vendor/autoload.php';
@@ -18,6 +16,6 @@ $options_dev = array('cache' => false, 'autoescape' => true);
 $twig = new Twig\Environment($loader);
 
 /* charger+compiler le template, exécuter, envoyer le résultat au navigateur */
-echo $twig->render('vue_accueil.twig', $donnees);
+require 'controllers\accueil.php';
 ?>
 
