@@ -37,7 +37,7 @@
         <div class="d-flex justify-content-around row row-cols-5 text-center">
             {% for item in products|sort((a, b) => a.name <=> b.name) %}
             <div class="card " style="margin :1em;">
-                <img src="static/img/Milk_and_Mocha_test.jpg" class="card-img-top" alt="Aucune image disponible">
+                <img src="static/productimages/{{item.image}}" class="card-img-top" alt="Aucune image disponible">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <a href="#" class="btn btn-danger">Acheter</a>
