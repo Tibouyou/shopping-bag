@@ -2,7 +2,7 @@
 <html>
 <html lang="fr">
     <head>
-        <!-- Required meta tags -->
+        <!-- meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,12 +14,36 @@
     
     <body>
         <h1 class="display-1">Shopping</h1>
-        <br>
-        <h1>Products</h1>
-        <ul>
+        
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                  <a class="nav-link" href="#">Boissons</a>
+                  <a class="nav-link" href="#">Biscuits</a>
+                </div>
+              </div>
+            </div>
+        </nav>
+
+        
+        <h1 class="display-4">Produits disponibles</h1>
+
+        <div class="d-flex justify-content-around row row-cols-5 text-center">
             {% for item in products|sort((a, b) => a.name <=> b.name) %}
-                <li>{{ item.name }}</li>
+            <div class="card " style="margin :1em;">
+                <img src="static/img/Milk_and_Mocha_test.jpg" class="card-img-top" alt="Aucune image disponible">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <a href="#" class="btn btn-danger">Acheter</a>
+                </div>
+            </div>    
             {% endfor %}
-        </ul>
+        </div>
     </body>
 </html>
