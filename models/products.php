@@ -6,4 +6,10 @@ class Products extends Modele
 		$sql = "SELECT * from products";
 		return $this->executerRequete($sql);
 	}
+
+    public function get_boissons()
+    {
+        $sql = "SELECT P.* from products P JOIN categories C ON P.cat_id = C.id WHERE C.name = 'boissons'";
+        return $this->executerRequete($sql);
+    }
 }
