@@ -1,7 +1,4 @@
 <?php
-
-require 'models/model.php';
-
 /* inclure l'autoloader */
 require_once 'vendor/autoload.php';
 
@@ -16,6 +13,8 @@ $options_dev = array('cache' => false, 'autoescape' => true);
 $twig = new Twig\Environment($loader);
 
 /* charger+compiler le template, exécuter, envoyer le résultat au navigateur */
-require 'controllers\accueil.php';
+require 'controllers\routeur.php';
+$routeur = new Routeur($twig);
+$routeur->routerRequete();
 ?>
 
