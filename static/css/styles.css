@@ -1,14 +1,55 @@
+:root{
+    /* Couleurs */
+    --color1: #91c3aa;
+    --color2: #ccd5ae;
+    --color3: #e9edc9;
+    --color4: #fefae0;
+    --color5: #faedcd;
+    --color6: #d4a373;
+}
+
 @font-face {
     font-family: "Grandstander";
     src: url('../font/Grandstander-clean.ttf') format('truetype');
   }
 
-header {
-    background-image: url("../img/header.png");
+/*Styles pour le header de l'accueil*/
+
+.haccueil{
+    background-image: url("../img/header.jpg");
     background-size: cover;
     background-position: center;
     padding: 10px;
     height: 90vh;
     font-family: "Grandstander", Calibri;
+    margin-top: 20px;
 }
+
+header h1 {
+    font-size: 4rem;
+    color: var(--color1);
+    margin-top: 15vh;
+    padding-left: 10vw;
+}
+
+/*Styles pour le header des autres pages*/
+
+.hpage{
+    background-image: url("../img/headerpage.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 10px;
+    height: 35vh;
+    font-family: "Grandstander", Calibri;
+    margin-top: 20px;
+}
+
+header > .h1page {
+    font-size: 4rem;
+    color: var(--color1);
+    margin-top: 7vh;
+    padding-left: 8vw;
+}
+
+
 
