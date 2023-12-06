@@ -1,8 +1,14 @@
+@font-face {
+    font-family: "Grandstander";
+    src: url('../font/Grandstander-clean.ttf') format('truetype');
+  }
+
 header {
     background-image: url("../img/header.png");
     background-size: cover;
     background-position: center;
     padding: 10px;
     height: 90vh;
+    font-family: "Grandstander", Calibri;
 }
 
