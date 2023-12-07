@@ -12,4 +12,16 @@ class Products extends Modele
         $sql = "SELECT P.* from products P JOIN categories C ON P.cat_id = C.id WHERE C.name = 'boissons'";
         return $this->executerRequete($sql);
     }
+
+    public function get_biscuits()
+    {
+        $sql = "SELECT P.* from products P JOIN categories C ON P.cat_id = C.id WHERE C.name = 'biscuits'";
+        return $this->executerRequete($sql);
+    }
+
+    public function get_fruits_secs()
+    {
+        $sql = "SELECT P.* from products P JOIN categories C ON P.cat_id = C.id WHERE C.name = 'fruits secs'";
+        return $this->executerRequete($sql);
+    }
 }

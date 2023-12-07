@@ -1,16 +1,25 @@
 <?php
 require_once 'controllers\accueil.php';
+require_once 'controllers\produits.php';
 require_once 'controllers\boissons.php';
+require_once 'controllers\biscuits.php';
+require_once 'controllers\fruitssecs.php';
 require_once 'controllers\account.php';
 class Routeur
 {
     private $ctrlAccueil;
+    private $ctrlProduits;
     private $ctrlBoissons;
+    private $ctrlBiscuits;
+    private $ctrlFruitsSecs;
     private $ctrlAccount;
     public function __construct($twig)
     {
-        $this->ctrlAccueil = new ControleurAcceuil($twig);
+        $this->ctrlAccueil = new ControleurAccueil($twig);
+        $this->ctrlProduits = new ControleurProduits($twig);
         $this->ctrlBoissons = new ControleurBoissons($twig);
+        $this->ctrlBiscuits = new ControleurBiscuits($twig);
+        $this->ctrlFruitsSecs = new ControleurFruitsSecs($twig);
         $this->ctrlAccount = new ControleurAccount($twig);
     }
     // Traite une requête entrante 
@@ -19,11 +28,20 @@ class Routeur
         try {
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {
+                    case 'accueil':
+                        $this->ctrlAccueil->accueil();
+                        break;
                     case 'boissons':
                         $this->ctrlBoissons->accueil();
                         break;
-                    case 'acceuil':
-                        $this->ctrlAccueil->accueil();
+                    case 'produits':
+                        $this->ctrlProduits->accueil();
+                        break;
+                    case 'biscuits':
+                        $this->ctrlBiscuits->accueil();
+                        break;
+                    case 'fruits-secs':
+                        $this->ctrlFruitsSecs->accueil();
                         break;
                     case 'account':
                         $this->ctrlAccount->render();

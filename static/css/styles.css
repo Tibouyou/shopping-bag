@@ -20,9 +20,8 @@
     background-size: cover;
     background-position: center;
     padding: 10px;
-    height: 90vh;
+    height: 75vh;
     font-family: "Grandstander", Calibri;
-    margin-top: 20px;
 }
 
 header h1 {
@@ -41,7 +40,6 @@ header h1 {
     padding: 10px;
     height: 35vh;
     font-family: "Grandstander", Calibri;
-    margin-top: 20px;
 }
 
 header > .h1page {
@@ -51,5 +49,19 @@ header > .h1page {
     padding-left: 8vw;
 }
 
+/*Styles pour la navbar*/
 
+.nav-perso{
+    background-color: var(--color1);
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: var(--color1);
+}
 
+.nav-perso a{
+    color: white;
+}
+
+.nav-perso a:hover{
+    color: var(--color3);
+}

@@ -1,6 +1,6 @@
 <?php
 require_once('models/products.php');
-class ControleurAccueil
+class ControleurProduits
 {
     private $products;
     private $twig;
@@ -11,7 +11,7 @@ class ControleurAccueil
     }
     public function accueil()
     {
-        echo $this->twig->render('accueil.twig', array(
+        echo $this->twig->render('produits.twig', array(
             'products' =>$this->products->get_all_products()->fetchAll()));
     }
 }
