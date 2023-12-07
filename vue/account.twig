@@ -15,13 +15,24 @@
     <body>
         {%  include 'navbar.twig' %}
         {%  include 'header.twig' %}
-        <p>Login</p>
-        <form method="post" action="#">
-				<p>Nom d'utilisateur : <input type="text" id="numLic" name="username" required> </p>
-				<p>Mot de passe : <input type="text" id="nom" name="password" required> </p>
-				</br>
-				<input type="submit" name="create_account" value="Créer un compte" class=""/>
-                <input type="submit" name="login" value="Se connecter" class=""/>
-			</form>
+
+        <h1 class="h1 p-3">Login</h1>
+
+        <form method="post" action="#" class="p-3">
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label h4">Nom d'utilisateur</label>
+              <input type="text" class="form-control" id="numLic" name="username" required/>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label h4">Mot de passe</label>
+              <input type="password" class="form-control" id="nom" name="password" required>
+            </div>
+           
+            <input type="submit" name="create_account" value="Créer un compte" class="btn-color1"/>
+            <input type="submit" name="login" value="Se connecter" class="btn-color1"/>
+
+          </form>
     </body>
 </html>
