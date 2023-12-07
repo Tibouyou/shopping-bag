@@ -79,6 +79,12 @@ header > .h1page {
     margin-top: 5vh;
 }
 
+/*Styles pour les formulaires*/
+
+.form-control-account{
+    width: 50%;
+}
+
 /*Styles pour les boutons*/
 
 .btn-color1{
