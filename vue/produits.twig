@@ -17,7 +17,7 @@
         {%  include 'header.twig' %}
         
         
-        <h1 class="display-4">Produits disponibles</h1>
+        <h1 class="display-4 h1 text-center m-4">Produits disponibles</h1>
 
         <div class="d-flex justify-content-around row row-cols-5 text-center">
             {% for item in products|sort((a, b) => a.name <=> b.name) %}
