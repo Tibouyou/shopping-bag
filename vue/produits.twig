@@ -19,16 +19,24 @@
         
         <h1 class="display-4 h1 text-center m-4">Produits disponibles</h1>
 
-        <div class="d-flex justify-content-around row row-cols-5 text-center">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for item in products|sort((a, b) => a.name <=> b.name) %}
-            <div class="card " style="margin :1em;">
+            <div class="col">
+              <div class="card h-100">
                 <img src="static/productimages/{{item.image}}" class="card-img-top" alt="Aucune image disponible">
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.name }}</h5>
-                    <a href="#" class="btn btn-danger">Acheter</a>
+                  <h5 class="card-title">{{ item.name }}</h5>
+                  <p class="card-text">{{item.description}}</p>
+                <p class="prix">{{item.price}} €</p>
+                  <button type="submit" class="btn btn-form">Ajouter au panier</button>
                 </div>
-            </div>    
+              </div>
+            </div>
             {% endfor %}
         </div>
+
+        {%  include 'footer.twig' %}
     </body>
 </html>
+
+

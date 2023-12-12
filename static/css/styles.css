@@ -3,8 +3,8 @@
     --color1: #91c3aa;
     --color2: #ccd5ae;
     --color3: #e9edc9;
-    --color4: #fefae0;
-    --color5: #faedcd;
+    --color4: #fffbee;
+    --color5: #d7c69a;
     --color6: #d4a373;
 }
 
@@ -12,6 +12,12 @@
     font-family: "Grandstander";
     src: url('../font/Grandstander-clean.ttf') format('truetype');
   }
+
+/*Styles pour le body*/
+
+body{
+    background-color: var(--color4) !important;
+}
 
 /*Styles pour le header de l'accueil*/
 
@@ -55,20 +61,44 @@ header > .h1page {
     background-color: var(--color1);
     font-family: "Grandstander", Calibri;
     font-size: 1.5rem;
-    color: var(--color1);
+    color: var(--color1) !important;
 }
 
 .nav-perso a{
     color: white;
 }
 
-.nav-perso a:hover{
-    color: var(--color3);
+.nav-link.active, .nav-link:active, .nav-link:focus, .nav-link:hover{
+    color: var(--color3) !important;
 }
 
-/*Styles pour le body*/
+.dropdown-item {
+    color: var(--color1) !important;
+}
 
+.dropdown-item.active, .dropdown-item:active {
+    color: var(--color1) !important;
+    background-color: var(--color3) !important;
+}
 
+.element-nav{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav{
+    justify-content: space-between ;
+}
+
+/*Styles pour le footer*/
+
+.footer{
+    display: block;
+    background-color: var(--color1);
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: white;
+}
 
 /*Styles pour les titres*/
 
@@ -85,11 +115,12 @@ header > .h1page {
     width: 50% !important;
 }
 
-/*Styles pour les boutons*/
+/*Styles pour les boutons des formulaires*/
 
 .btn-outline-primary {
     color: var(--color1) !important;
     border: 1px solid var(--color1) !important;
+    background-color: white !important;
 }
 
 .btn-outline-primary:hover{
@@ -98,4 +129,52 @@ header > .h1page {
     background-color: var(--color1) !important;
 }
 
+/*Styles pour les cartes produits*/
+
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;    
+    margin-top: 2vh !important;
+}
+
+.card{
+    border: 1px solid var(--color6) !important;
+}
+
+.card:hover{
+    border-color: var(--color6) !important;
+    transition: 0.5s;
+    transform: scale(1.02);
+}
+
+.card-title{
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: var(--color6);
+}
+
+.card-img-top{
+    height: 50vh;
+    object-fit: cover;
+    border-bottom: 2px solid var(--color6) !important;
+}
+
+.prix{
+    font-family: "Grandstander", Calibri;
+    font-size: 1rem;
+    color: var(--color5);
+}
+
+.btn-form{
+    border: 2px solid var(--color6) !important;
+    color: var(--color6) !important;
+}
+
+.btn-form:hover{
+    border-color: var(--color6) !important;
+    color: white !important;
+    background-color: var(--color6) !important;
+    transition: 0.5s;
+    transform: scale(1.05);
+}
 
