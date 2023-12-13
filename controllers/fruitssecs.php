@@ -12,7 +12,9 @@ class ControleurFruitsSecs
     public function accueil()
     {
         echo $this->twig->render('produits.twig', array(
-            'products' =>$this->products->get_fruits_secs()->fetchAll()));
+            'products' =>$this->products->get_fruits_secs()->fetchAll(),
+            'page_name' => "Fruits secs"
+        ));
     }
 }
 ?>

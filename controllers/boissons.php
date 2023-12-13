@@ -12,7 +12,9 @@ class ControleurBoissons
     public function accueil()
     {
         echo $this->twig->render('produits.twig', array(
-            'products' =>$this->products->get_boissons()->fetchAll()));
+            'products' =>$this->products->get_boissons()->fetchAll(),
+            'page_name' => "Boissons"
+        ));
     }
 }
 ?>

@@ -12,7 +12,9 @@ class ControleurProduits
     public function accueil()
     {
         echo $this->twig->render('produits.twig', array(
-            'products' =>$this->products->get_all_products()->fetchAll()));
+            'products' =>$this->products->get_all_products()->fetchAll(),
+            'page_name' => "Produits"
+        ));
     }
 }
 ?>

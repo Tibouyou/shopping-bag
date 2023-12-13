@@ -12,7 +12,9 @@ class ControleurBiscuits
     public function accueil()
     {
         echo $this->twig->render('produits.twig', array(
-            'products' =>$this->products->get_biscuits()->fetchAll()));
+            'products' =>$this->products->get_biscuits()->fetchAll(),
+            'page_name' => "Biscuits"
+        ));
     }
 }
 ?>

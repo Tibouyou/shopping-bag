@@ -17,7 +17,7 @@
         {%  include 'header.twig' %}
         
         
-        <h1 class="display-4 h1 text-center m-4">Produits disponibles</h1>
+        <h1 class="display-4 h1 text-center m-4">{{ page_name }} disponibles</h1>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for item in products|sort((a, b) => a.name <=> b.name) %}
