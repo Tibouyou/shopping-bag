@@ -20,18 +20,32 @@
         <h1 class="display-4 h1 text-center m-4">{{ page_name }} disponibles</h1>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for item in products|sort((a, b) => a.name <=> b.name) %}
-            <div class="col">
-              <div class="card h-100">
-                <img src="static/productimages/{{item.image}}" class="card-img-top" alt="Aucune image disponible">
-                <div class="card-body">
-                  <h5 class="card-title">{{ item.name }}</h5>
-                  <p class="card-text">{{item.description}}</p>
-                <p class="prix">{{item.price}} €</p>
-                  <button type="submit" class="btn btn-form">Ajouter au panier</button>
+            {% for item in products|sort((a, b) => b.quantity <=> a.quantity) %}
+            {% if item.quantity == 0 %}
+              <div class="col">
+                <div class="card card-gray h-100">
+                  <img src="static/productimages/{{item.image}}" class="card-img-top gray-filter" alt="Aucune image disponible">
+                  <div class="card-body">
+                    <h5 class="card-title-gray">{{ item.name }}</h5>
+                    <p class="card-text">{{item.description}}</p>
+                  <p class="prix-gray">{{item.price}} €</p>
+                    <button type="submit" class="btn btn-form" disabled>Produit indisponible</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            {% else %}
+              <div class="col">
+                <div class="card h-100">
+                  <img src="static/productimages/{{item.image}}" class="card-img-top" alt="Aucune image disponible">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{item.description}}</p>
+                  <p class="prix">{{item.price}} €</p>
+                    <button type="submit" class="btn btn-form">Ajouter au panier</button>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
             {% endfor %}
         </div>
 
