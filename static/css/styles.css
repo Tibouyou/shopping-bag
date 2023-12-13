@@ -81,13 +81,8 @@ header > .h1page {
     background-color: var(--color3) !important;
 }
 
-.element-nav{
-    display: flex;
-    flex-direction: row;
-}
-
-.nav{
-    justify-content: space-between ;
+.compte {
+    flex-grow: 0;
 }
 
 /*Styles pour le footer*/
