@@ -5,6 +5,7 @@ require_once 'controllers\boissons.php';
 require_once 'controllers\biscuits.php';
 require_once 'controllers\fruitssecs.php';
 require_once 'controllers\account.php';
+require_once 'controllers\panier.php';
 class Routeur
 {
     private $ctrlAccueil;
@@ -13,6 +14,7 @@ class Routeur
     private $ctrlBiscuits;
     private $ctrlFruitsSecs;
     private $ctrlAccount;
+    private $ctrlPanier;
     public function __construct($twig)
     {
         $this->ctrlAccueil = new ControleurAccueil($twig);
@@ -21,6 +23,7 @@ class Routeur
         $this->ctrlBiscuits = new ControleurBiscuits($twig);
         $this->ctrlFruitsSecs = new ControleurFruitsSecs($twig);
         $this->ctrlAccount = new ControleurAccount($twig);
+        $this->ctrlPanier = new ControleurPanier($twig);
     }
     // Traite une requête entrante 
     public function routerRequete()
@@ -45,6 +48,9 @@ class Routeur
                         break;
                     case 'account':
                         $this->ctrlAccount->render();
+                        break;
+                    case 'panier':
+                        $this->ctrlPanier->render();
                         break;
                     default :
                         throw new Exception("Action non valide");
