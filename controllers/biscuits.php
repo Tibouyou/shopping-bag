@@ -9,7 +9,7 @@ class ControleurBiscuits
         $this->products = new Products();
         $this->twig = $twig;
     }
-    public function accueil()
+    public function render()
     {
         echo $this->twig->render('produits.twig', array(
             'products' =>$this->products->get_biscuits()->fetchAll(),

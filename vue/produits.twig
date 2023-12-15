@@ -41,9 +41,9 @@
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{item.description}}</p>
                     <p class="prix">{{item.price}} €</p>
-                  <form method="POST" action="">
-                  <input type="hidden" name="product_id" value="{{item.id}}"/>
-                  <button type="submit" class="btn btn-form">Ajouter au panier</button>
+                  <form method="GET" action="">
+                    <input type="hidden" name="product_id" value="{{item.id}}"/>
+                    <a href="?page=produit&amp;id={{item.id}}" class="btn btn-form">Voir le produit</a>
                   </form>
                 </div>
                 </div>

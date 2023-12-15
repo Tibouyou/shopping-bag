@@ -6,6 +6,7 @@ require_once 'controllers\biscuits.php';
 require_once 'controllers\fruitssecs.php';
 require_once 'controllers\account.php';
 require_once 'controllers\panier.php';
+require_once 'controllers\produit.php';
 class Routeur
 {
     private $ctrlAccueil;
@@ -15,6 +16,7 @@ class Routeur
     private $ctrlFruitsSecs;
     private $ctrlAccount;
     private $ctrlPanier;
+    private $ctrlProduit;
     public function __construct($twig)
     {
         $this->ctrlAccueil = new ControleurAccueil($twig);
@@ -24,6 +26,7 @@ class Routeur
         $this->ctrlFruitsSecs = new ControleurFruitsSecs($twig);
         $this->ctrlAccount = new ControleurAccount($twig);
         $this->ctrlPanier = new ControleurPanier($twig);
+        $this->ctrlProduit = new ControleurProduit($twig);
     }
     // Traite une requête entrante 
     public function routerRequete()
@@ -32,19 +35,22 @@ class Routeur
             if (isset($_GET['page'])) {
                 switch ($_GET['page']) {
                     case 'accueil':
-                        $this->ctrlAccueil->accueil();
+                        $this->ctrlAccueil->render();
                         break;
                     case 'boissons':
-                        $this->ctrlBoissons->accueil();
+                        $this->ctrlBoissons->render();
                         break;
                     case 'produits':
-                        $this->ctrlProduits->accueil();
+                        $this->ctrlProduits->render();
                         break;
                     case 'biscuits':
-                        $this->ctrlBiscuits->accueil();
+                        $this->ctrlBiscuits->render();
                         break;
                     case 'fruits-secs':
-                        $this->ctrlFruitsSecs->accueil();
+                        $this->ctrlFruitsSecs->render();
+                        break;
+                    case 'produit':
+                        $this->ctrlProduit->render();
                         break;
                     case 'account':
                         $this->ctrlAccount->render();
@@ -56,7 +62,7 @@ class Routeur
                         throw new Exception("Action non valide");
                 }           
             } else {
-                $this->ctrlAccueil->accueil();
+                $this->ctrlAccueil->render();
             }
         } catch (Exception $e) {
             $this->erreur($e->getMessage());
