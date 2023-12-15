@@ -72,6 +72,18 @@ header > .h1page {
     color: var(--color3) !important;
 }
 
+.navbar-toggler{
+    border: 2px solid black !important;
+}
+
+.navbar-toggler:active, .navbar-toggler:focus, .navbar-toggler:hover{
+    border: 2px solid black !important;
+}
+
+.navbar-toggler-icon{
+    align-items: center;
+}
+
 .dropdown-item {
     color: var(--color1) !important;
 }
@@ -81,8 +93,9 @@ header > .h1page {
     background-color: var(--color3) !important;
 }
 
-.compte {
-    flex-grow: 0;
+.navbar-icon{
+   filter: invert(100%);
+   padding-top: 0% !important;
 }
 
 /*Styles pour le footer*/
@@ -93,6 +106,10 @@ header > .h1page {
     font-family: "Grandstander", Calibri;
     font-size: 1.5rem;
     color: white;
+    position : relative;
+    bottom: 0;
+    width: 100%;
+    height: 30vh;
 }
 
 /*Styles pour les titres*/
