@@ -121,6 +121,29 @@ header > .h1page {
     margin-top: 5vh;
 }
 
+.h2{
+    font-family: "Grandstander", Calibri;
+    font-size: 2rem;
+    color: var(--color1);
+    margin-top: 5vh !important;
+}
+
+.h3{
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: var(--color5);
+    margin-top: 5vh !important;
+    margin-bottom: 2vh !important;
+}
+
+.h4{
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: var(--color5);
+    margin-top: 5vh !important;
+    margin-bottom: 2vh !important;
+}
+
 /*Styles pour les formulaires*/
 
 .form-control{
