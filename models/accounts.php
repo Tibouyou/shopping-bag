@@ -6,6 +6,8 @@ class Accounts extends Modele
         $crypted_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO logins (username, password) VALUES ('$username', '$crypted_password')";
         $this->executerRequete($sql);
+        $sql = "SELECT id FROM logins WHERE username = '$username'";
+        return $this->executerRequete($sql)->fetch()['id'];
     }
 
     public function login($username, $password)
@@ -14,9 +16,10 @@ class Accounts extends Modele
         $data = $this->executerRequete($sql);
         $result = $data->fetchAll();
         if (password_verify($password, $result[0]['password'])) {
-            echo "You are logged in";
+            $sql = "SELECT id FROM logins WHERE username = '$username'";
+            return array('success' => true, 'user_id' => $this->executerRequete($sql)->fetch()['id']);
         } else {
-            echo "Wrong password";
+            return array('success' => false);
         }
     }
     public function get_account_info()
