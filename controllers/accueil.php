@@ -7,7 +7,7 @@ class ControleurAccueil
     {
         $this->twig = $twig;
     }
-    public function accueil()
+    public function render()
     {
         echo $this->twig->render('accueil.twig');
     }

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.css">
+
+        <title>ISI WEB 4 SHOP</title>
+    </head>
+    
+    <body>
+        {%  include 'navbar.twig' %}
+
+        <div class="mt-4 ms-5 ">
+            <h1 class="h1 mb-5">{{product.name}}</h1>
+
+            <div class="row">
+                <div class="col-4">
+                    <img src="static/productimages/{{product.image}}" alt="Image du produit" class="img-fluid">
+                </div>
+                <div class="col-8">
+                    <h3 class="h3">Description du produit :</h3>
+                    <p>{{product.description}}</p>
+
+                    <h4 class="h4">Quantité disponible :</h4>
+                    <p>{{product.quantity}}</p>
+
+                    <h4 class="prix mt-5 py-2">Prix à l'unité : {{product.price}} €</h4>
+                    
+
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="{{product.id}}"/>
+                        <button type="submit" class="btn btn-form">Ajouter au panier</button>
+                    </form>
+                </div>
+            </div>
+
+            <h2 class="h2">Avis sur le produit</h2>
+            
+        </div>
+
+        {%  include 'footer.twig' %}
+
+    </body>
+</html>

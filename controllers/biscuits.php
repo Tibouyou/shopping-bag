@@ -11,7 +11,7 @@ class ControleurBiscuits
         $this->panier = new Panier();
         $this->twig = $twig;
     }
-    public function accueil()
+    public function render()
     {
         if (isset($_POST['product_id'])) {
             $id = $_POST['product_id'];
