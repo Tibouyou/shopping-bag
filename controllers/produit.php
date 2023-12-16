@@ -1,15 +1,18 @@
 <?php
 require_once('models/products.php');
 require_once('models/panier.php');
+require_once('models/avis.php');
 class ControleurProduit
 {
     private $product;
     private $panier;
+    private $avis;
     private $twig;
     public function __construct($twig)
     {
         $this->product = new Products();
         $this->panier = new Panier();
+        $this->avis = new Avis();
         $this->twig = $twig;
     }
     public function render()
@@ -22,7 +25,7 @@ class ControleurProduit
             $id = $_GET['id'];
             echo $this->twig->render('produit.twig', array(
                 'product' => $this->product->get_product($id)->fetch(),
-                'page_name' => "Produit"
+                'avis' => $this->avis->get_avis($id)->fetchAll()
             ));
         }
         else {

@@ -144,6 +144,10 @@ header > .h1page {
     margin-bottom: 2vh !important;
 }
 
+.subtitle{
+    color: rgb(85, 85, 85) !important;
+}
+
 /*Styles pour les formulaires*/
 
 .form-control{

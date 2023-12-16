@@ -24,10 +24,10 @@
                 </div>
                 <div class="col-8">
                     <h3 class="h3">Description du produit :</h3>
-                    <p>{{product.description}}</p>
+                    <h5 class="h5">{{product.description}}</h5>
 
                     <h4 class="h4">Quantité disponible :</h4>
-                    <p>{{product.quantity}}</p>
+                    <h5 class="h5">{{product.quantity}}</h5>
 
                     <h4 class="prix mt-5 py-2">Prix à l'unité : {{product.price}} €</h4>
                     
@@ -40,6 +40,30 @@
             </div>
 
             <h2 class="h2">Avis sur le produit</h2>
+
+            <div class="row">
+                <div class="col-3">
+                    <h4 class="h4">Note moyenne :</h4>
+                    <h5 class="h5">{{product.average_rating}}</h5>
+                </div>
+                <div class="col-9">
+                    <h4 class="h4">Commentaires :</h4>
+                    {% for comment in avis %}
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-start">
+                                    <h5 class="h5">{{comment.title}}</h5>
+                                    <h5 class="h5">{{comment.stars}}</h5>
+                                </div>
+                                <h6 class="subtitle">{{comment.name_user}}</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{comment.description}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
             
         </div>
 
