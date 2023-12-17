@@ -7,7 +7,10 @@ class Accounts extends Modele
         $sql = "INSERT INTO logins (username, password) VALUES ('$username', '$crypted_password')";
         $this->executerRequete($sql);
         $sql = "SELECT id FROM logins WHERE username = '$username'";
-        return $this->executerRequete($sql)->fetch()['id'];
+        $id = $this->executerRequete($sql)->fetch()['id'];
+        $sql = "INSERT INTO customers (id, registered) VALUES ('$id', 1)";
+        $this->executerRequete($sql);
+        return $id;
     }
 
     public function login($username, $password)
@@ -24,7 +27,8 @@ class Accounts extends Modele
     }
     public function get_account_info()
     {
-        $sql = "SELECT * from customers";
+        $id = $_SESSION['user_id'];
+        $sql = "SELECT * from customers WHERE id = '$id'";
         return $this->executerRequete($sql);
     }
 }

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.css">
+
+        <title>ISI WEB 4 SHOP</title>
+    </head>
+    
+    <body>
+        {%  include 'navbar.twig' %}
+        {%  include 'header.twig' %}
+
+        <h1 class="h1 mt-5 ps-5">Identification client</h1>
+        <p class="h5 mt-3 ps-5">Veuillez vous identifier pour accéder à votre compte. Si vous n'en n'avez pas encore, vous pouvez en créer un gratuitement.</p>
+
+        <form method="post" action="#" class="p-5">
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label h5">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="numLic" name="username" required/>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label h5">Mot de passe</label>
+            <input type="password" class="form-control" id="nom" name="password" required>
+          </div>
+          
+          <input type="submit" name="create_account" value="Créer un compte" class="btn btn-outline-primary"/>
+          <input type="submit" name="login" value="Se connecter" class="btn btn-outline-primary"/>
+
+        </form>
+
+        {%  include 'footer.twig' %}
+    </body>
+</html>
