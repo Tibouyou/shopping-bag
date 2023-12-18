@@ -16,11 +16,31 @@
         {%  include 'navbar.twig' %}
         {%  include 'header.twig' %}
 
-         <div>
+        <div class="m-5">
+            <h1 class="h1 mb-5">Mon panier</h1>
+
+
             {% for item in panier|sort((a, b) => b.quantity <=> a.quantity) %}
-              <p> {{ item.name }} x{{item.quantity}}</p>
+            
+            
+            <div class="card me-3 my-4 card-panier">
+                <div class="row g-0">
+                    <div class="col-md-2 text-center">
+                        <img src="static/productimages/{{item.image}}" class="img-fluid rounded-start petite-image" alt="Image du produit">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <h4 class="card-title">{{item.name}}</h4>
+                            <p class="card-text">Prix du produit : {{item.price}} €</p>
+                            <p class="card-text">Quantité du produit : {{item.quantity}}</p>
+                            <h5 class="card-text h5 text-end prix-produit">Prix total pour le produit : {{(item.price * item.quantity) | number_format(2, '.', ',')}} €</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
+         
 
         {%  include 'footer.twig' %}
     </body>
