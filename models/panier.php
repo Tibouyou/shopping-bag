@@ -44,7 +44,7 @@ class Panier extends Modele
     public function get_panier()
     {
         $panier_id = $_SESSION['SESS_ORDERNUM'];
-        $sql = "SELECT OI.quantity, P.name FROM orderitems OI, products P WHERE OI.product_id = P.id AND OI.order_id = '$panier_id'";
+        $sql = "SELECT OI.quantity, P.name, P.image, P.price FROM orderitems OI, products P WHERE OI.product_id = P.id AND OI.order_id = '$panier_id'";
         return $this->executerRequete($sql);
     }
 }
