@@ -20,7 +20,8 @@ class ControleurProduit
         if (isset($_GET['id'])) {
             if (isset($_POST['product_id'])) {
                 $id = $_POST['product_id'];
-                $this->panier->create_panier($id);
+                $nb_quantity = $_POST['nb_quantity'];
+                $this->panier->create_panier($id, $nb_quantity);
             }
             $id = $_GET['id'];
             echo $this->twig->render('produit.twig', array(
