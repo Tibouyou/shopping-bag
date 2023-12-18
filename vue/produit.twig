@@ -40,13 +40,17 @@
                     <h4 class="h4">Quantité disponible :</h4>
                     <h5 class="h5">{{product.quantity}}</h5>
 
-                    <h4 class="prix mt-5 py-2">Prix à l'unité : {{product.price}} €</h4>
-                    
+                    <h4 class="prix mt-3 py-2">Prix à l'unité : {{product.price}} €</h4>
 
-                    <form method="POST" action="">
-                        <input type="hidden" name="product_id" value="{{product.id}}"/>
-                        <button type="submit" class="btn btn-form">Ajouter au panier</button>
-                    </form>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <h4 class="h4 my-0 me-3">Choisissez la quantité voulue :</h4>                   
+
+                        <form method="POST" action="" class="d-flex justify-content-start align-items-center">
+                            <input type="hidden" name="product_id" value="{{product.id}}"/>
+                            <input type="number" name="nb_quantity" value="1" min="1" max="{{product.quantity}}" class="form-control quantity me-2" required>
+                            <button type="submit" class="btn btn-form">Ajouter au panier</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
