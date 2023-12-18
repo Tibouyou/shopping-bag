@@ -28,6 +28,6 @@ class Products extends Modele
     public function get_product($id)
     {
         $sql = "SELECT * from products WHERE id = '$id'";
-        return $this->executerRequete($sql, array($id));
+        return $this->executerRequete($sql);
     }
 }

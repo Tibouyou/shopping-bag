@@ -21,11 +21,12 @@
         <p>Prénom : <input type="text" name="forname" value="{{ account_info.forname }}"></p>
         <p>Nom : <input type="text" name="surname" value="{{ account_info.surname }}"></p>
         <p>Email :  <input type="text" name="email" value="{{ account_info.email }}"></p>
-        <p>Téléphone : <input type="text" name="phone" value="{{ account_info.phone }}"></p>
+        <p>Téléphone : <input type="tel" name="phone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}"value="{{ account_info.phone }}"></p>
         <p>Adresse 1 : <input type="text" name="add1" value="{{ account_info.add1 }}"></p>
         <p>Adresse 2 : <input type="text" name="add2" value="{{ account_info.add2 }}"></p>
         <p>Adresse 3 : <input type="text" name="add3" value="{{ account_info.add3 }}"></p>
         <p>Code postal : <input type="text" name="postcode" value="{{ account_info.postcode }}"></p>
+        <input type="submit" name="update_account" value="Mettre à jour" class="btn btn-outline-primary"/>
         </form>
         <form method="POST" action="">
           <button type="submit" name="log_out" class="btn btn-form">Se déconnecter</button>
