@@ -25,7 +25,8 @@ class ControleurProduit
             $id = $_GET['id'];
             echo $this->twig->render('produit.twig', array(
                 'product' => $this->product->get_product($id)->fetch(),
-                'avis' => $this->avis->get_avis($id)->fetchAll()
+                'avis' => $this->avis->get_avis($id)->fetchAll(), 
+                'moyenne' => $this->avis->get_average($id)->fetch()['moyenne']
             ));
         }
         else {

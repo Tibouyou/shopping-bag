@@ -7,4 +7,11 @@ class Avis extends Modele
         $avis = $this->executerRequete($sql, array($id));
         return $avis;
     }
+
+    public function get_average($id)
+    {
+        $sql = "SELECT ROUND(AVG(stars),1) as moyenne FROM reviews WHERE id_product = '$id'";
+        $moyenne = $this->executerRequete($sql);
+        return $moyenne;
+    }
 }
