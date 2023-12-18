@@ -13,10 +13,6 @@ class ControleurBoissons
     }
     public function render()
     {
-        if (isset($_POST['product_id'])) {
-            $id = $_POST['product_id'];
-            $this->panier->create_panier($id);
-        }
         echo $this->twig->render('produits.twig', array(
             'products' =>$this->products->get_boissons()->fetchAll(),
             'page_name' => "Boissons"
