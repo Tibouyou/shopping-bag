@@ -148,6 +148,32 @@ header > .h1page {
     color: rgb(85, 85, 85) !important;
 }
 
+.display-2{
+    font-family: "Grandstander", Calibri;
+    color: black;
+    margin-top: 5vh !important;
+    height: 20vh !important;
+}
+
+/* Styles pour l'accueil */
+
+.card-accueil{
+    border: 1px solid var(--color6) !important;
+    margin : 10vw !important;
+}
+
+.categorie-accueil-link{
+    text-decoration: none !important;
+}
+
+.paccueil{
+    background-image: url("../img/produits-image.jpeg");
+    background-size: cover;
+    background-position: center;
+    margin: 2rem !important;
+}
+
+
 /*Styles pour les formulaires*/
 
 .form-control{
@@ -211,12 +237,13 @@ header > .h1page {
     color: var(--color6) !important;
 }
 
-.btn-form:hover{
+.btn-form:hover, .btn-form:active, .btn-form:focus{
     border-color: var(--color6) !important;
     color: white !important;
     background-color: var(--color6) !important;
     transition: 0.5s;
     transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px var(--color6);
 }
 
 /*Styles pour les cartes produits indisponibles*/

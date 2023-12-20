@@ -17,14 +17,30 @@
         <header class="bg-image haccueil">
             <h1 class="display-1">ISI WEB 4 SHOP</h1>
         </header>
+        
+        <div class="card-accueil">
+            <a href="main.php?page=produits" class="categorie-accueil-link"> 
+                <div class="bg-image paccueil">
+                    <h2 class="display-2 text-center">Tous nos produits</h2>
+                </div>
+            </a>
 
-        <p>
-            Bienvenue sur le site de vente en ligne de l'ISI WEB 4 !
-        </p>
-
-        <p>
-            Vous trouverez ici tous les produits disponibles à la vente.
-        </p>
+            <div class="row row-cols-1 row-cols-md-3 g-4 p-3">
+                {% for categorie in categories %}
+                <div class="col">
+                    <a href="main.php?page={{categorie.name}}" class="categorie-accueil-link">
+                        <div class="card h-100">
+                            <img src="static/img/categorie{{categorie.id}}.jpg" class="card-img-top" alt="Image de catégorie">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{categorie.name}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                    {% endfor %}
+            </div>
+        </div>
+       
               
         {%  include 'footer.twig' %}
     </body>

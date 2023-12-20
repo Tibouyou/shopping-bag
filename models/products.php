@@ -30,4 +30,10 @@ class Products extends Modele
         $sql = "SELECT * from products WHERE id = '$id'";
         return $this->executerRequete($sql);
     }
+
+    public function get_all_categories()
+    {
+        $sql = "SELECT * from categories";
+        return $this->executerRequete($sql);
+    }
 }
