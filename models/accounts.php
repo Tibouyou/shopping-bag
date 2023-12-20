@@ -6,10 +6,9 @@ class Accounts extends Modele
         $crypted_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO logins (username, password) VALUES ('$username', '$crypted_password')";
         $this->executerRequete($sql);
-        $sql = "SELECT id FROM logins WHERE username = '$username' AND password = '$crypted_password'";
-        $id = $this->executerRequete($sql)->fetch()['id'];
-        $sql = "INSERT INTO customers (id, forname, surname, email, registered) VALUES ('$id', '$forname', '$surname', '$email',  1)";
+        $sql = "INSERT INTO customers ( forname, surname, email, registered) VALUES ('$forname', '$surname', '$email',  1)";
         $this->executerRequete($sql);
+        $id = $this->getConnexion()->lastInsertId();
         $sql = "UPDATE logins SET customer_id = '$id' WHERE id = '$id'";
         $this->executerRequete($sql);
         return $id;
@@ -21,8 +20,14 @@ class Accounts extends Modele
         $data = $this->executerRequete($sql);
         $result = $data->fetchAll();
         if (password_verify($password, $result[0]['password'])) {
-            $sql = "SELECT id FROM logins WHERE username = '$username'";
-            return array('success' => true, 'user_id' => $this->executerRequete($sql)->fetch()['id']);
+            $sql = "SELECT customer_id FROM logins WHERE username = '$username'";
+            $user_id = $this->executerRequete($sql)->fetch()['customer_id'];
+            if (isset($_SESSION['SESS_ORDERNUM'])) {
+                $order_id = $_SESSION['SESS_ORDERNUM'];
+                $sql = "UPDATE orders SET customer_id = '$user_id' WHERE id = '$order_id' AND status = 0";
+                $this->executerRequete($sql);
+            }
+            return array('success' => true, 'user_id' => $user_id);
         } else {
             return array('success' => false);
         }

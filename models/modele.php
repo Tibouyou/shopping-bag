@@ -22,4 +22,9 @@ abstract class Modele
 		$data = $this->connexion->query($sql);
 		return $data;
 	}
+
+	public function getConnexion()
+	{
+		return $this->connexion;
+	}
 }

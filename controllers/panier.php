@@ -11,7 +11,7 @@ class ControleurPanier
     }
     public function render()
     {
-        echo $this->twig->render('panier.twig', array('panier' => $this->panier->get_panier()->fetchAll()));
+        echo $this->twig->render('panier.twig', array('panier' => $this->panier->get_panier()));
     }
 }
 ?>
