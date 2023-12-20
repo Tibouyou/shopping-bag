@@ -20,12 +20,12 @@
         
         <div class="card-accueil">
             <a href="main.php?page=produits" class="categorie-accueil-link"> 
-                <div class="bg-image paccueil">
-                    <h2 class="display-2 text-center">Tous nos produits</h2>
+                <div class="bg-image paccueil d-flex">
+                    <h2 class="titre-produits-accueil align-self-center ps-3">Tous nos produits</h2>
                 </div>
             </a>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4 p-3">
+            <div class="row row-cols-1 row-cols-md-3 g-4 p-3 pt-0">
                 {% for categorie in categories %}
                 <div class="col">
                     <a href="main.php?page={{categorie.name}}" class="categorie-accueil-link">

@@ -148,18 +148,11 @@ header > .h1page {
     color: rgb(85, 85, 85) !important;
 }
 
-.display-2{
-    font-family: "Grandstander", Calibri;
-    color: black;
-    margin-top: 5vh !important;
-    height: 20vh !important;
-}
-
 /* Styles pour l'accueil */
 
 .card-accueil{
-    border: 1px solid var(--color6) !important;
     margin : 10vw !important;
+    background-color: white  !important;
 }
 
 .categorie-accueil-link{
@@ -167,10 +160,20 @@ header > .h1page {
 }
 
 .paccueil{
-    background-image: url("../img/produits-image.jpeg");
+    background-image: url("../img/produits-image.jpg");
     background-size: cover;
     background-position: center;
+    border: 1px solid var(--color6) !important;
+    border-radius: 5px !important;
     margin: 2rem !important;
+    height: 25vh !important;
+}
+
+.titre-produits-accueil{
+    font-family: "Grandstander", Calibri;
+    margin-top: -2vh !important;
+    font-size: 5rem !important;
+    color: var(--color6);
 }
 
 
