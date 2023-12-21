@@ -1,0 +1,42 @@
+/*Styles pour la navbar*/
+
+.navbar{
+    background-color: var(--color1) !important;
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: var(--color1) !important;
+}
+
+.navbar a{
+    color: white;
+}
+
+.nav-link.active, .nav-link:active, .nav-link:focus, .nav-link:hover{
+    color: var(--color3) !important;
+}
+
+.navbar-toggler{
+    border: 2px solid black !important;
+}
+
+.navbar-toggler:active, .navbar-toggler:focus, .navbar-toggler:hover{
+    border: 2px solid black !important;
+}
+
+.navbar-toggler-icon{
+    align-items: center;
+}
+
+.dropdown-item {
+    color: var(--color1) !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: var(--color1) !important;
+    background-color: var(--color3) !important;
+}
+
+.navbar-icon{
+   filter: invert(100%);
+   padding-top: 0% !important;
+}

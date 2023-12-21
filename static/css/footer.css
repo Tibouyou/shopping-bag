@@ -1,0 +1,13 @@
+/*Styles pour le footer*/
+
+.footer{
+    display: block;
+    background-color: var(--color1);
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: white;
+    position : relative;
+    bottom: 0;
+    width: 100%;
+    height: 30vh;
+}

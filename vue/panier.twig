@@ -7,6 +7,9 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/css/navbar.css">
+        <link rel="stylesheet" href="static/css/footer.css">
+        <link rel="stylesheet" href="static/css/panier.css">
         <link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.css">
 
         <title>ISI WEB 4 SHOP</title>
@@ -29,9 +32,9 @@
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">
-                            <h4 class="card-title">{{item.name}}</h4>
-                            <p class="card-text">Prix du produit : {{item.price}} €</p>
-                            <p class="card-text">Quantité du produit : {{item.quantity}}</p>
+                            <h3 class="h3 card-title pt-0">{{item.name}}</h3>
+                            <h4 class="card-text h4">Prix du produit : {{item.price}} €</h4>
+                            <h4 class="card-text h4">Quantité du produit : {{item.quantity}}</h4>
                             <h5 class="card-text h5 text-end prix-produit">Prix total pour le produit : {{(item.price * item.quantity) | number_format(2, '.', ',')}} €</h5>
                         </div>
                     </div>

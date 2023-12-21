@@ -1,0 +1,49 @@
+/* Styles pour l'accueil */
+
+.categories-accueil{
+    margin : 10vw !important;
+    background-color: white  !important;
+}
+
+.categories-accueil a{
+    margin: 2rem !important;
+}
+
+.categorie-accueil-link{
+    text-decoration: none !important;
+}
+
+.paccueil{
+    background-image: url("../img/produits-image.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--color6) !important;
+    border-radius: 5px !important;
+    margin: 1rem !important;
+    height: 25vh !important;
+}
+
+.titre-produits-accueil{
+    font-family: "Grandstander", Calibri;
+    margin-top: -2vh !important;
+    font-size: 5rem !important;
+    color: var(--color6);
+}
+
+.card{
+    border: 1px solid var(--color6) !important;
+    border-radius: 5px !important;
+}
+
+.card:hover, .paccueil:hover{
+    border-color: var(--color6) !important;
+    transition: 0.5s;
+    transform: scale(1.02);
+}
+
+.card-title{
+    font-family: "Grandstander", Calibri;
+    font-size: 2rem !important;
+    color: var(--color6);
+}
+

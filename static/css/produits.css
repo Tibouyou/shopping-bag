@@ -1,0 +1,83 @@
+/*Styles pour les cartes*/
+
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;    
+    margin-top: 2vh !important;
+}
+
+.card-img-top{
+    height: 50vh;
+    object-fit: cover;
+    border-bottom: 2px solid var(--color6) !important;
+}
+
+/*Styles pour les cartes produits disponibles*/
+
+.card{
+    border: 1px solid var(--color6) !important;
+}
+
+.card:hover{
+    border-color: var(--color6) !important;
+    transition: 0.5s;
+    transform: scale(1.02);
+}
+
+.card-title{
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: var(--color6);
+}
+
+.prix{
+    font-family: "Grandstander", Calibri;
+    font-size: 1rem;
+    color: var(--color5);
+}
+
+.btn-form{
+    border: 2px solid var(--color6) !important;
+    color: var(--color6) !important;
+}
+
+.btn-form:hover, .btn-form:active, .btn-form:focus{
+    border-color: var(--color6) !important;
+    color: white !important;
+    background-color: var(--color6) !important;
+    transition: 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px var(--color6);
+}
+
+/*Styles pour les cartes produits indisponibles*/
+
+.card.card-gray{
+    border: 1px solid gray !important;
+}
+
+.card.card-gray:hover{
+    transform: scale(1);
+}
+
+.gray-filter{
+    filter: grayscale(100%);
+}
+
+.card-title-gray{
+    font-family: "Grandstander", Calibri;
+    font-size: 1.5rem;
+    color: gray;
+}
+
+.prix-gray{
+    font-family: "Grandstander", Calibri;
+    font-size: 1rem;
+    color: gray;
+}
+
+.btn-form:disabled{
+    border: 2px solid gray !important;
+    background-color: gray !important;
+    color: white !important;
+}

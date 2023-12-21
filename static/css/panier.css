@@ -1,0 +1,24 @@
+/*Styles pour le panier*/
+
+.card-panier{
+    border: 1px solid var(--color6) !important;
+}
+
+.petite-image{
+    height: 30vh !important;
+    object-fit: cover;
+    margin: 1.5vh !important;
+}
+
+.prix-produit{
+    font-family: "Grandstander", Calibri;
+    font-size: 1rem;
+    color: var(--color5);
+    border-top: 1px solid var(--color6) !important;
+}
+
+.card-title {
+    font-family: "Grandstander", Calibri;
+    font-size: 2rem !important;
+    color: var(--color6);
+}
