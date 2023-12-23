@@ -58,6 +58,7 @@ class Panier extends Modele
     public function modify_quantity($orderitem_id, $new_quantity)
     {
         $sql = "SELECT quantity FROM orderitems WHERE id = '$orderitem_id'";
+        var_dump($this->executerRequete($sql)->fetch());
         $old_quantity = $this->executerRequete($sql)->fetch()['quantity'];
 
         $sql = "SELECT order_id FROM orderitems WHERE id = '$orderitem_id'";
@@ -92,7 +93,7 @@ class Panier extends Modele
     {
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
             $user_id = $_SESSION['user_id'];
-            $sql = "SELECT OI.quantity, P.name, P.image, P.price FROM orderitems OI, products P, orders O WHERE OI.product_id = P.id AND OI.order_id = O.id AND O.customer_id = '$user_id' AND O.status = 0";
+            $sql = "SELECT OI.quantity, P.name, P.image, P.price, OI.id, P.quantity as max_quantity FROM orderitems OI, products P, orders O WHERE OI.product_id = P.id AND OI.order_id = O.id AND O.customer_id = '$user_id' AND O.status = 0";
             return $this->executerRequete($sql)->fetchAll();
         } 
         else if (isset($_SESSION['SESS_ORDERNUM'])) {
