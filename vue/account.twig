@@ -19,20 +19,56 @@
         {%  include 'navbar.twig' %}
         {%  include 'header.twig' %}
 
-        <h1>Mon compte</h1>
-        <form method="POST" action="">
-        <p>Prénom : <input type="text" name="forname" value="{{ account_info.forname }}"></p>
-        <p>Nom : <input type="text" name="surname" value="{{ account_info.surname }}"></p>
-        <p>Email :  <input type="text" name="email" value="{{ account_info.email }}"></p>
-        <p>Téléphone : <input type="tel" name="phone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}"value="{{ account_info.phone }}"></p>
-        <p>Adresse 1 : <input type="text" name="add1" value="{{ account_info.add1 }}"></p>
-        <p>Adresse 2 : <input type="text" name="add2" value="{{ account_info.add2 }}"></p>
-        <p>Adresse 3 : <input type="text" name="add3" value="{{ account_info.add3 }}"></p>
-        <p>Code postal : <input type="text" name="postcode" value="{{ account_info.postcode }}"></p>
-        <input type="submit" name="update_account" value="Mettre à jour" class="btn btn-outline-primary"/>
+        <h1 class="h1 ps-5 pt-3">Mon compte</h1>
+
+        <form  method="POST" action="" class="row g-3 p-5">
+            <div class="col-md-6">
+                <label for="surname" class="form-label h5">Nom</label>
+               <input type="text" class="form-control" name="surname" value="{{ account_info.surname }}">
+            </div>
+            
+            <div class="col-md-6">
+                <label for="forname" class="form-label h5">Prénom</label>
+                <input type="text" class="form-control" name="forname" value="{{ account_info.forname }}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="email" class="form-label h5">Email</label>
+                <input type="text" class="form-control" name="email" value="{{ account_info.email }}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="phone" class="form-label h5">Téléphone</label>
+                <input type="tel" class="form-control" name="phone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}"value="{{ account_info.phone }}">  
+            </div>
+           
+            <div class="col-10">
+                <label for="add1" class="form-label h5">Adresse Principale</label>
+                <input type="text" class="form-control" name="add1" value="{{ account_info.add1 }}">
+            </div>
+
+            <div class="col-md-2">
+                <label for="postcode" class="form-label h5">Code postal</label>
+                <input type="text" class="form-control" name="postcode" value="{{ account_info.postcode }}">
+            </div>
+
+            <div class="col-12">
+                <label for="add2" class="form-label h5">Adresse complémentaire 1</label>
+                <input type="text" class="form-control" name="add2" value="{{ account_info.add2 }}">
+            </div>
+
+            <div class="col-12">
+                <label for="add3" class="form-label h5">Adresse complémentaire 2</label>
+                <input type="text" class="form-control" name="add3" value="{{ account_info.add3 }}">
+            </div>
+           
+            <div class="col-12">
+                <input type="submit" name="update_account" value="Mettre à jour" class="btn btn-outline-primary"/>
+            </div>
         </form>
-        <form method="POST" action="">
-          <button type="submit" name="log_out" class="btn btn-form">Se déconnecter</button>
+
+        <form method="POST" action="" class="ps-5">
+            <button type="submit" name="log_out" class="btn btn-outline-primary">Déconnexion</button>
         </form>
 
         {%  include 'footer.twig' %}

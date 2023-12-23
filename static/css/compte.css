@@ -1,7 +1,16 @@
 /*Styles pour les formulaires*/
 
-.form-control{
+.form-control-connexion{
     width: 50% !important;
+}
+
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;        
+}
+
+.row > *{
+    padding-left: 0px !important;
 }
 
 /*Styles pour les boutons des formulaires*/

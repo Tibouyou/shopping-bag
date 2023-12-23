@@ -25,37 +25,43 @@
 
 		<form method="post" action="#" class="p-5" oninput='password2.setCustomValidity(password1.value != password2.value ? "Les mots de passe ne correspondent pas." : "")'>
 
+			<div class="row mb-3">
+				<div class="col">
+					<label for="forname" class="form-label h5">Nom</label>
+					<input type="text" class="form-control" name="forname" required/>
+				</div>
+
+				<div class="col">
+					<label for="surname" class="form-label h5">Prénom</label>
+					<input type="text" class="form-control" name="surname" required/>
+				</div>
+			</div>
+			
+			<div class="mb-3">
+				<label for="email" class="form-label h5">Email</label>
+				<input type="email" placeholder="exemple@gmail.com" class="form-control" name="email" required>
+			</div>
+
 			<div class="mb-3">
 				<label for="username" class="form-label h5">Nom d'utilisateur</label>
 				<input type="text" class="form-control" name="username" required/>
 			</div>
 
-      <div class="mb-3">
-				<label for="surname" class="form-label h5">Prénom</label>
-				<input type="text" class="form-control" name="surname" required/>
-			</div>
+			<div class="row mb-3">
+				<div class="col">
+					<label for="password1" class="form-label h5">Mot de passe</label>
+					<input type="password" class="form-control" name="password1" required>
+				</div>
 
-      <div class="mb-3">
-				<label for="forname" class="form-label h5">Nom</label>
-				<input type="text" class="form-control" name="forname" required/>
+				<div class="col">
+					<label for="password2" class="form-label h5">Confirmer le mot de passe</label>
+					<input type="password" class="form-control" name="password2" required>
+				</div>
 			</div>
 
 			<div class="mb-3">
-				<label for="email" class="form-label h5">Email</label>
-				<input type="email" class="form-control" name="email" required>
+				<input type="submit" name="create_account" value="Créer un compte" class="btn btn-outline-primary"/>
 			</div>
-
-      <div class="mb-3">
-				<label for="password1" class="form-label h5">Mot de passe</label>
-				<input type="password" class="form-control" name="password1" required>
-			</div>
-
-      <div class="mb-3">
-				<label for="password2" class="form-label h5">Confirmer le mot de passe</label>
-				<input type="password" class="form-control" name="password2" required>
-			</div>
-
-			<input type="submit" name="create_account" value="Créer un compte" class="btn btn-outline-primary"/>
 		</form>
 
 		{%  include 'footer.twig' %}
