@@ -55,6 +55,20 @@ class Panier extends Modele
         $this->executerRequete($sql);
     }
 
+    public function modify_quantity($orderitem_id, $quantity)
+    {
+        $sql = "UPDATE products SET quantity = quantity + (SELECT quantity FROM orderitems WHERE id = '$orderitem_id') - '$quantity' WHERE id = (SELECT product_id FROM orderitems WHERE id = '$orderitem_id')";
+        $this->executerRequete($sql);
+
+        $sql = "SELECT price FROM products WHERE id = (SELECT product_id FROM orderitems WHERE id = '$orderitem_id')";
+        $price = $this->executerRequete($sql)->fetch()['price'];
+        $sql = "UPDATE orders SET total = total - '$price' * (SELECT quantity FROM orderitems WHERE id = '$orderitem_id') + '$price' * '$quantity' WHERE id = (SELECT order_id FROM orderitems WHERE id = '$orderitem_id')";
+        $this->executerRequete($sql);
+
+        $sql = "UPDATE orderitems SET quantity = '$quantity' WHERE id = '$orderitem_id'";
+        $this->executerRequete($sql);
+    }
+
     public function get_panier()
     {
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
@@ -64,7 +78,7 @@ class Panier extends Modele
         } 
         else if (isset($_SESSION['SESS_ORDERNUM'])) {
             $panier_id = $_SESSION['SESS_ORDERNUM'];
-            $sql = "SELECT OI.quantity, P.name, P.image, P.price FROM orderitems OI, products P WHERE OI.product_id = P.id AND OI.order_id = '$panier_id'";
+            $sql = "SELECT OI.quantity, P.name, P.image, P.price, OI.id, P.quantity as max_quantity FROM orderitems OI, products P WHERE OI.product_id = P.id AND OI.order_id = '$panier_id'";
             return $this->executerRequete($sql)->fetchAll();
         }
         return array();
