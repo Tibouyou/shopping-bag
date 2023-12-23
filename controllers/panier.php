@@ -16,6 +16,12 @@ class ControleurPanier
             $nb_quantity = $_POST['nb_quantity'];
             $this->panier->modify_quantity($id, $nb_quantity);
         }
+        
+        if (isset($_POST['delete'])) {
+            $id = $_POST['delete'];
+            $this->panier->modify_quantity($id, 0);
+        }
+        
         echo $this->twig->render('panier.twig', array('panier' => $this->panier->get_panier()));
     }
 }

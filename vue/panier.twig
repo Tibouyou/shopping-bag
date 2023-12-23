@@ -44,6 +44,10 @@
                                     <input type="number" name="nb_quantity" value="{{item.quantity}}" min="0" max="{{item.max_quantity + item.quantity}}" class="form-control quantity me-2" required>
                                     <button type="submit" class="btn btn-form">Modifier</button>
                                 </form>
+                                <form method="POST" action="" class="d-flex justify-content-start align-items-center">
+                                    <input type="hidden" name="delete" value="{{item.id}}"/>
+                                    <button type="submit" class="btn btn-form">Supprimer</button>
+                                </form>
                             </div>
 
                             <h5 class="card-text h5 text-end prix-produit">Prix total pour le produit : {{(item.price * item.quantity) | number_format(2, '.', ',')}} €</h5>
