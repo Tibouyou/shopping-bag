@@ -55,18 +55,37 @@ class Panier extends Modele
         $this->executerRequete($sql);
     }
 
-    public function modify_quantity($orderitem_id, $quantity)
+    public function modify_quantity($orderitem_id, $new_quantity)
     {
-        $sql = "UPDATE products SET quantity = quantity + (SELECT quantity FROM orderitems WHERE id = '$orderitem_id') - '$quantity' WHERE id = (SELECT product_id FROM orderitems WHERE id = '$orderitem_id')";
+        $sql = "SELECT quantity FROM orderitems WHERE id = '$orderitem_id'";
+        $old_quantity = $this->executerRequete($sql)->fetch()['quantity'];
+
+        $sql = "SELECT order_id FROM orderitems WHERE id = '$orderitem_id'";
+        $order_id = $this->executerRequete($sql)->fetch()['order_id'];
+
+        $sql = "UPDATE products SET quantity = quantity + '$old_quantity' - '$new_quantity' WHERE id = (SELECT product_id FROM orderitems WHERE id = '$orderitem_id')";
         $this->executerRequete($sql);
 
         $sql = "SELECT price FROM products WHERE id = (SELECT product_id FROM orderitems WHERE id = '$orderitem_id')";
         $price = $this->executerRequete($sql)->fetch()['price'];
-        $sql = "UPDATE orders SET total = total - '$price' * (SELECT quantity FROM orderitems WHERE id = '$orderitem_id') + '$price' * '$quantity' WHERE id = (SELECT order_id FROM orderitems WHERE id = '$orderitem_id')";
+
+        $sql = "UPDATE orders SET total = total - '$price' * '$old_quantity' + '$price' * '$new_quantity' WHERE id = '$order_id'";
         $this->executerRequete($sql);
 
-        $sql = "UPDATE orderitems SET quantity = '$quantity' WHERE id = '$orderitem_id'";
-        $this->executerRequete($sql);
+        if ($new_quantity == 0) {
+            $sql = "DELETE FROM orderitems WHERE id = '$orderitem_id'";
+            $this->executerRequete($sql);
+            $sql = "SELECT total FROM orders WHERE id = '$order_id'";
+            $total = $this->executerRequete($sql)->fetch()['total'];
+            if ($total <= 0) {
+                $sql = "UPDATE orders SET total = 0 WHERE id = '$order_id'";
+                $this->executerRequete($sql);
+            }
+        }
+        else {
+            $sql = "UPDATE orderitems SET quantity = '$new_quantity' WHERE id = '$orderitem_id'";
+            $this->executerRequete($sql);
+        }
     }
 
     public function get_panier()
