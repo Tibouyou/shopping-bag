@@ -32,7 +32,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 p-3 pt-0">
                 {% for categorie in categories %}
                 <div class="col">
-                    <a href="main.php?page={{categorie.name}}" class="categorie-accueil-link">
+                    <a href="main.php?page={{categorie.link}}" class="categorie-accueil-link">
                         <div class="card">
                             <img src="static/img/categorie{{categorie.id}}.jpg" class="card-img-top" alt="Image de catégorie">              
                             <h5 class="card-title text-center p-2">{{categorie.name}}</h5> 
