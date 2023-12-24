@@ -1,8 +1,9 @@
 /* Styles pour l'accueil */
 
+/*Styles pour les catégories*/
+
 .categories-accueil{
-    margin : 10vw !important;
-    background-color: white  !important;
+    margin : 5vw 10vw 5vw 10vw !important;
 }
 
 .categories-accueil a{
@@ -14,7 +15,7 @@
 }
 
 .paccueil{
-    background-color: #ffeaaa !important;
+    background-color: var(--color7) !important;
     border: 1px solid var(--color6) !important;
     border-radius: 5px !important;
     margin: 1rem !important;
@@ -45,3 +46,37 @@
     color: var(--color6);
 }
 
+/*Styles pour la section à propos*/
+
+.maison{
+    background-color: var(--color1) !important;
+    height: 90vh !important;
+}
+
+.maison-container{
+    margin: 0vh 10vw 5vh 50vw !important;
+    padding-top: 15vh !important;
+}
+
+.titre-maison-accueil{
+    font-family: "Grandstander", Calibri;
+    font-size: 4rem !important;
+    color: var(--color1) !important;
+    margin-bottom: -10  vh !important;
+}
+
+.texte-maison-accueil{
+    color: var(--color1) !important;
+    background-color: var(--color4) !important;
+    padding: 1vh 1vw 1vh 1vw !important; 
+    
+}
+
+.parallax {
+    background-image: url("../img/header.jpg");
+    min-height: 80vh; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
