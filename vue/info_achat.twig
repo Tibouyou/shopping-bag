@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<!-- meta tags -->
+		<meta charset="utf-8">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="static/css/styles.css">
+		<link rel="stylesheet" href="static/css/navbar.css">
+		<link rel="stylesheet" href="static/css/footer.css">
+		<link rel="stylesheet" href="static/css/compte.css">
+		<link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.css">
+
+		<link rel="icon" href="static/img/favicon.ico"/>
+
+		<title>ISI WEB 4 SHOP</title>
+	</head>
+
+	<body>
+		{%  include 'navbar.twig' %}
+		{%  include 'header.twig' %}
+		<form method="post" action="#" class="p-5 ps-0 pb-2">
+			<div class="mb-3">
+				<label for="firstname" class="form-label h5">Prénom</label>
+				<input type="text" class="form-control" name="firstname" required/>
+			</div>
+			<div class="mb-3">
+				<label for="lastname" class="form-label h5">Nom</label>
+				<input type="text" class="form-control" name="lastname" required/>
+			</div>
+			<div class="mb-3">
+				<label for="add1" class="form-label h5">Adresse</label>
+				<input type="text" class="form-control" name="add1" required/>
+			</div>
+			<div class="mb-3">
+				<label for="add2" class="form-label h5">Complément d'adresse</label>
+				<input type="text" class="form-control" name="add2"/>
+			</div>
+			<div class="mb-3">
+				<label for="city" class="form-label h5">Ville</label>
+				<input type="text" class="form-control" name="city" required/>
+			</div>
+			<div class="mb-3">
+				<label for="postcode" class="form-label h5">Code Postal</label>
+				<input type="text" class="form-control" name="postcode" required/>
+			</div>
+			<div class="mb-3">
+				<label for="email" class="form-label h5">Email</label>
+				<input type="text" class="form-control" name="email" required/>
+			</div>
+			<input type="submit" name="payer" value="Valider" class="btn btn-outline-primary"/>
+		</form>
+
+		{%  include 'footer.twig' %}
+	</body>
+</html>

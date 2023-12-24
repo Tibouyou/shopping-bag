@@ -4,7 +4,7 @@ class Avis extends Modele
     public function get_avis($id)
     {
         $sql = "SELECT * FROM reviews WHERE id_product = '$id'";
-        $avis = $this->executerRequete($sql, array($id));
+        $avis = $this->executerRequete($sql);
         return $avis;
     }
 
