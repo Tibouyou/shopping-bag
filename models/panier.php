@@ -98,9 +98,29 @@ class Panier extends Modele
         } 
         else if (isset($_SESSION['SESS_ORDERNUM'])) {
             $panier_id = $_SESSION['SESS_ORDERNUM'];
-            $sql = "SELECT OI.quantity, P.name, P.image, P.price, OI.id, P.quantity as max_quantity FROM orderitems OI, products P WHERE OI.product_id = P.id AND OI.order_id = '$panier_id'";
+            $sql = "SELECT OI.quantity, P.name, P.image, P.price, OI.id, P.quantity as max_quantity FROM orderitems OI, products P, orders O WHERE OI.product_id = P.id AND OI.order_id = O.id AND O.id = '$panier_id' AND O.status = 0";
             return $this->executerRequete($sql)->fetchAll();
         }
         return array();
+    }
+
+    public function get_total() {
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+            $user_id = $_SESSION['user_id'];
+            $sql = "SELECT total FROM orders WHERE customer_id = '$user_id' AND status = 0";
+            if ($this->executerRequete($sql)->rowCount() == 0) {
+                return 0;
+            }
+            return $this->executerRequete($sql)->fetch()['total'];
+        } 
+        else if (isset($_SESSION['SESS_ORDERNUM'])) {
+            $panier_id = $_SESSION['SESS_ORDERNUM'];
+            $sql = "SELECT total FROM orders WHERE id = '$panier_id' AND status = 0";
+            if ($this->executerRequete($sql)->rowCount() == 0) {
+                return 0;
+            }
+            return $this->executerRequete($sql)->fetch()['total'];
+        }
+        return 0;
     }
 }

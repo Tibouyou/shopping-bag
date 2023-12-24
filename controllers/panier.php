@@ -22,7 +22,7 @@ class ControleurPanier
             $this->panier->modify_quantity($id, 0);
         }
         
-        echo $this->twig->render('panier.twig', array('panier' => $this->panier->get_panier()));
+        echo $this->twig->render('panier.twig', array('panier' => $this->panier->get_panier(), 'total' => $this->panier->get_total()));
     }
 }
 ?>
