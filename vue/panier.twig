@@ -24,14 +24,17 @@
 
 		<div class="m-5">
 			<h1 class="h1 mb-5">Mon panier</h1>
+			
 			{% if panier|length == 0 %}
 				<h2 class="h3">Votre panier est vide</h3>
 			{% endif %}
+
 			{% for item in panier|sort((a, b) => b.quantity <=> a.quantity) %}
 				<div class="card me-3 my-4 card-panier">
 					<div class="row g-0">
 						<div class="col-md-2 text-center">
 							<img src="static/productimages/{{item.image}}" class="img-fluid rounded-start petite-image" alt="Image du produit">
+						
 						</div>
 						<div class="col-md-10">
 							<div class="card-body">
@@ -71,7 +74,8 @@
 					<button type="submit" class="btn btn-form">Aller à la caisse</button>
 				</form>
 			</div>
-
-			{%  include 'footer.twig' %}</body>
+		</div>
+		
+		{%  include 'footer.twig' %}
 	</body>
 </html>
