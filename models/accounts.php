@@ -4,6 +4,11 @@ class Accounts extends Modele
     public function register($username, $password, $email, $forname, $surname)
     {
         $crypted_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "SELECT username FROM logins WHERE username = '$username'";
+        $data = $this->executerRequete($sql);
+        if ($data->rowCount() > 0) {
+            return false;
+        }
         $sql = "INSERT INTO logins (username, password) VALUES ('$username', '$crypted_password')";
         $this->executerRequete($sql);
         $sql = "INSERT INTO customers ( forname, surname, email, registered) VALUES ('$forname', '$surname', '$email',  1)";

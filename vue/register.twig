@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="static/css/compte.css">
 		<link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.css">
 
-		<link rel="icon" href="static/img/static/img/favicon.ico" />
+		<link rel="icon" href="static/img/static/img/favicon.ico"/>
 
 		<title>ISI WEB 4 SHOP</title>
 	</head>
@@ -24,6 +24,13 @@
 
 		<h1 class="h1 mt-5 ps-5">Créer un compte</h1>
 		<p class="h5 mt-3 ps-5">Veuillez renseigner vos informations personnelles.</p>
+
+		{% if error %}
+			<br>
+			<div class="alert alert-danger" role="alert">
+				{{ error }}
+			</div>
+		{% endif %}
 
 		<form method="post" action="#" class="p-5" oninput='password2.setCustomValidity(password1.value != password2.value ? "Les mots de passe ne correspondent pas." : "")'>
 
@@ -38,7 +45,7 @@
 					<input type="text" class="form-control" name="surname" required/>
 				</div>
 			</div>
-			
+
 			<div class="mb-3">
 				<label for="email" class="form-label h5">Email</label>
 				<input type="email" placeholder="exemple@gmail.com" class="form-control" name="email" required>
