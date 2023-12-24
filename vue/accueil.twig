@@ -58,9 +58,30 @@
         <div class="commentaires">
             <div class="p-3">
                 <div class="">
-                    <h2 class="h2 titre-commentaires-accueil text-center">Ce que nos clients disent de nous</h2>
+                    <h2 class="h2 titre-commentaires-accueil text-center mb-5">Ce que nos clients disent de nous</h2>
 
-                   
+                    <div id="carouselExample" class="carousel slide p-3 bg-light text-center">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <p>Faites défiler pour le découvrir</p>
+                            </div>
+                            {% for commentaire in avis | slice(0,4) %}
+                                <div class="carousel-item">
+                                    <p><strong>{{commentaire.title}}</strong> - {{commentaire.name_user}}</p>
+                                    <p>{{commentaire.description}}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

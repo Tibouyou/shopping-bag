@@ -4,7 +4,7 @@ class Avis extends Modele
     public function get_avis($id)
     {
         $sql = "SELECT * FROM reviews WHERE id_product = '$id'";
-        $avis = $this->executerRequete($sql, array($id));
+        $avis = $this->executerRequete($sql);
         return $avis;
     }
 
@@ -13,5 +13,12 @@ class Avis extends Modele
         $sql = "SELECT ROUND(AVG(stars),1) as moyenne FROM reviews WHERE id_product = '$id'";
         $moyenne = $this->executerRequete($sql);
         return $moyenne;
+    }
+
+    public function get_all_avis()
+    {
+        $sql = "SELECT * FROM reviews";
+        $avis = $this->executerRequete($sql);
+        return $avis;
     }
 }
