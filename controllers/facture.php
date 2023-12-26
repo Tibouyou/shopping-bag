@@ -1,7 +1,8 @@
 <?php
 use Fpdf\Fpdf;
+require_once('models/panier.php');
 
-class PDF extends FPDF
+class ControleurFacture extends FPDF
 {
   // Header
   function Header()
@@ -18,7 +19,7 @@ class PDF extends FPDF
     // position du coin supérieur gauche par rapport à la marge gauche (mm)
     $this->SetX(70);
     // Texte : 60 >largeur ligne, 8 >hauteur ligne. Premier 0 >pas de bordure, 1 >retour à la ligneensuite, C >centrer texte, 1> couleur de fond ok  
-    $this->Cell(60, 8, 'TEST', 0, 1, 'C', 1);
+    $this->Cell(60, 8, 'Facture', 0, 1, 'C', 1);
     // Saut de ligne 10 mm
     $this->Ln(10);
   }
@@ -59,7 +60,9 @@ class PDF extends FPDF
     $this->SetTextColor(0);
     // on affiche les en-têtes du tableau
     $this->entete_table($position_entete);
-    $this->Output('test.pdf', 'D'); // affichage à l'écran
+    // AFFICHAGE DU DÉTAIL DU TABLEAU
+    $this->panier();
+    $this->Output('test.pdf', 'I'); // affichage à l'écran
   }
   // Fonction en-tête des tableaux en 3 colonnes de largeurs variables
   function entete_table($position_entete)
@@ -70,16 +73,41 @@ class PDF extends FPDF
     $this->SetY($position_entete);
     // position de colonne 1 (10mm à gauche)	
     $this->SetX(10);
-    $this->Cell(60, 8, 'Ville', 1, 0, 'C', 1);	// 60 >largeur colonne, 8 >hauteur colonne
+    $this->Cell(60, 8, 'Produit', 1, 0, 'C', 1);	// 60 >largeur colonne, 8 >hauteur colonne
     // position de la colonne 2 (70 = 10+60)
     $this->SetX(70);
-    $this->Cell(60, 8, 'Pays', 1, 0, 'C', 1);
+    $this->Cell(60, 8, 'Quantité', 1, 0, 'C', 1);
     // position de la colonne 3 (130 = 70+60)
     $this->SetX(130);
-    $this->Cell(30, 8, 'Repas', 1, 0, 'C', 1);
+    $this->Cell(30, 8, 'Prix', 1, 0, 'C', 1);
 
     $this->Ln(); // Retour à la ligne
   }
+  function panier() {
+    $panier = new Panier();
+    $data = $panier->get_panier();
+    $position_detail = 78;
+    for ($i = 0; $i < count($data); $i++) {
+        // position abcisse de la colonne 1 (10mm du bord)
+        $this->SetY($position_detail);
+        $this->SetX(10);
+        $this->MultiCell(60,8,$data[$i]['name'],1,'C');
+        // position abcisse de la colonne 2 (70 = 10 + 60)	
+        $this->SetY($position_detail);
+        $this->SetX(70); 
+        $this->MultiCell(60,8,$data[$i]['quantity'],1,'C');
+        // position abcisse de la colonne 3 (130 = 70+ 60)
+        $this->SetY($position_detail);
+        $this->SetX(130); 
+        $this->MultiCell(30,8,$data[$i]['price'],1,'C');
+    
+        // on incrémente la position ordonnée de la ligne suivante (+8mm = hauteur des cellules)	
+        $position_detail += 8; 
+    }
+  }
+  function render()
+  {
+    $this->generateFacture();
+  }
 }
-
 ?>

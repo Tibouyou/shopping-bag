@@ -16,7 +16,6 @@ class Caisse extends Modele
             $order_id = $_SESSION['SESS_ORDERNUM'];
             $sql = "UPDATE orders SET status = 2, payment_type='$payment_type' WHERE id = '$order_id'";
             $this->executerRequete($sql);
-            unset($_SESSION['SESS_ORDERNUM']);
         }
     }
 }
