@@ -9,6 +9,7 @@ require_once 'controllers\account.php';
 require_once 'controllers\panier.php';
 require_once 'controllers\produit.php';
 require_once 'controllers\caisse.php';
+require_once 'controllers\facture.php';
 class Routeur
 {
     private $twig;
@@ -22,6 +23,7 @@ class Routeur
     private $ctrlPanier;
     private $ctrlProduit;
     private $ctrlCaisse;
+    private $ctrlFacture;
     public function __construct($twig)
     {
         $this->twig = $twig;
@@ -71,6 +73,10 @@ class Routeur
                     case 'caisse':
                         $this->ctrlCaisse = new ControleurCaisse($this->twig);
                         $this->ctrlCaisse->render();
+                        break;
+                    case 'facture':
+                        $this->ctrlFacture = new ControleurFacture('P', 'mm', 'A4');
+                        $this->ctrlFacture->render();
                         break;
                     default :
                         throw new Exception("Action non valide");
