@@ -1,13 +1,28 @@
 /*Styles pour le footer*/
 
-.footer{
+footer{
     display: block;
     background-color: var(--color1);
-    font-family: "Grandstander", Calibri;
-    font-size: 1.5rem;
-    color: white;
     position : relative;
     bottom: 0;
     width: 100%;
-    height: 30vh;
+    height: 35vh;
+    color: white !important;
+    font-family: "Grandstander", Calibri !important;
 }
+
+footer a {
+    text-decoration: none !important;
+    font-size: 1rem;
+    color: white !important;
+}
+
+footer a:hover {
+    text-decoration: underline !important;
+    color: var(--color2) !important;
+}
+
+footer li {
+    padding-bottom: 0.5rem !important;
+}
+
