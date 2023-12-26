@@ -21,6 +21,7 @@
         {%  include 'navbar.twig' %}
         <header class="bg-image haccueil">
             <h1 class="display-1">ISI WEB 4 SHOP</h1>
+            <h1 class="display-6 mt-5">Votre boutique comme à la maison</h1>
         </header>
         
         <div class="categories-accueil p-3">
@@ -48,7 +49,7 @@
         <div class="parallax">
             <div class="maison-container">
                 <h1 class="titre-maison-accueil text-start">Fait maison</h1>
-                <p class="texte-maison-accueil text-end m-5 mt-3">
+                <p class="texte-maison-accueil text-end">
                 Chaque produit est imprégné de l'amour et du dévouement qui caractérisent les produits faits maison. 
                 Notre engagement envers la qualité artisanale transparaît dans chaque étape de notre processus de fabrication. 
                 En privilégiant des ingrédients soigneusement sélectionnés, nous assurons non seulement une expérience gustative exceptionnelle, mais également une confiance totale en ce que vous dégustez.</p>
@@ -58,34 +59,29 @@
         <div class="commentaires">
             <div class="p-3">
                 <div class="">
-                    <h2 class="h2 titre-commentaires-accueil text-center mb-5">Ce que nos clients disent de nous</h2>
+                    <h1 class="h1 titre-commentaires-accueil text-center mb-5 mt-3">Ce que nos clients disent de nous</h1>
 
-                    <div id="carouselExample" class="carousel slide p-3 bg-light text-center">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <p>Faites défiler pour le découvrir</p>
+                    <div class="content-slider">
+                        <div class="slider">
+                            <div class="mask">
+                                <ul>
+                                    {% for commentaire in avis | slice(0,5) %}
+                                    <li class="anim{{commentaire.id_review}}">
+                                        <div class="titre-avis">{{commentaire.title}}</div>
+                                        <div class="text-avis">{{commentaire.description}}</div>
+                                        <div class="nameuser">- <i>{{commentaire.name_user}}</i></div>
+                                    </li>
+                                    {% endfor %}
                             </div>
-                            {% for commentaire in avis | slice(0,4) %}
-                                <div class="carousel-item">
-                                    <p><strong>{{commentaire.title}}</strong> - {{commentaire.name_user}}</p>
-                                    <p>{{commentaire.description}}</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-    
+
+  
+            
               
         {%  include 'footer.twig' %}
     </body>
