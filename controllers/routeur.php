@@ -1,5 +1,6 @@
 <?php
 require_once 'controllers\accueil.php';
+require_once 'controllers\footerlink.php';
 require_once 'controllers\produits.php';
 require_once 'controllers\boissons.php';
 require_once 'controllers\biscuits.php';
@@ -12,6 +13,7 @@ class Routeur
 {
     private $twig;
     private $ctrlAccueil;
+    private $ctrlFooterLink;
     private $ctrlProduits;
     private $ctrlBoissons;
     private $ctrlBiscuits;
@@ -33,6 +35,10 @@ class Routeur
                     case 'accueil':
                         $this->ctrlAccueil = new ControleurAccueil($this->twig);
                         $this->ctrlAccueil->render();
+                        break;
+                    case 'footerlink':
+                        $this->ctrlFooterLink = new ControleurFooterLink($this->twig);
+                        $this->ctrlFooterLink->render();
                         break;
                     case 'boissons':
                         $this->ctrlBoissons = new ControleurBoissons($this->twig);
