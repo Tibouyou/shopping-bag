@@ -1,0 +1,42 @@
+.btn-form{
+    border: 2px solid var(--color1) !important;
+    color: var(--color1) !important;
+}
+
+.btn-form:hover, .btn-form:active, .btn-form:focus{
+    border-color: var(--color1) !important;
+    color: white !important;
+    background-color: var(--color1) !important;
+    transition: 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px var(--color1) !important;
+}
+
+.color1{
+    color: var(--color1) !important;
+}
+
+.accordion-header, .accordion-item{
+    background-color: var(--color4) !important;
+    border: none !important;
+}
+
+.accordion-button {
+    background-color: white !important;
+    border: 2px solid var(--color1) !important;
+    border-radius: 10px !important;
+}
+
+.accordion-button:focus {
+    box-shadow: 0px 0px 10px 0px var(--color1) !important;
+}
+
+.accordion-collapse {
+    background-color: var(--color4) !important;
+    border: 2px solid var(--color1) !important;
+    border-radius: 10px !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    filter: grayscale(100%); 
+}
