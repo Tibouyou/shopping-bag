@@ -1,0 +1,22 @@
+.color6 {
+    color : var(--color6);
+}
+
+.infos-container {
+    border : 1px solid var(--color6);
+    border-radius : 5px;
+}
+
+.btn-form{
+    border: 2px solid var(--color6) !important;
+    color: var(--color6) !important;
+}
+
+.btn-form:hover, .btn-form:active, .btn-form:focus{
+    border-color: var(--color6) !important;
+    color: white !important;
+    background-color: var(--color6) !important;
+    transition: 0.5s;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px var(--color6);
+}

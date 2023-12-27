@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="static/css/styles.css">
 		<link rel="stylesheet" href="static/css/navbar.css">
 		<link rel="stylesheet" href="static/css/footer.css">
-		<link rel="stylesheet" href="static/css/compte.css">
+		<link rel="stylesheet" href="static/css/paiement.css">
 		<link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.css">
 
 		<link rel="icon" href="static/img/favicon.ico"/>
@@ -21,70 +21,107 @@
 	<body>
 		{%  include 'navbar.twig' %}
 		{%  include 'header.twig' %}
+
+		<h1 class="h1 mt-5 ps-5">Saisissez vos informations de paiement</h1>
+
 		{% if is_logged %}
-			<form method="post" action="#" class="p-5 ps-0 pb-2">
-				<div class="mb-3">
-					<label for="firstname" class="form-label h5">Prénom</label>
-					<p>{{info.forname}}</p>
-				</div>
-				<div class="mb-3">
-					<label for="lastname" class="form-label h5">Nom</label>
-					<p>{{info.surname}}</p>
-				</div>
-				<div class="mb-3">
-					<label for="add1" class="form-label h5">Adresse</label>
-					<p>{{info.add1}}</p>
-				</div>
-				<div class="mb-3">
-					<label for="add2" class="form-label h5">Complément d'adresse</label>
-					<p>{{info.add2}}</p>
-				</div>
-				<div class="mb-3">
-					<label for="city" class="form-label h5">Ville</label>
-					<p>{{info.add3}}</p>
-				</div>
-				<div class="mb-3">
-					<label for="postcode" class="form-label h5">Code Postal</label>
-					<p>{{info.postcode}}</p>
-				</div>
-				<div class="mb-3">
-					<label for="email" class="form-label h5">Email</label>
-					<p>{{info.email}}</p>
-				</div>
-				<input type="submit" name="payer_keep" value="Valider" class="btn btn-outline-primary"/>
-			</form>
-			<form method="post" action="#" class="p-5 ps-0 pb-2">
-				<div class="mb-3">
-					<label for="firstname" class="form-label h5">Prénom</label>
-					<input type="text" class="form-control" name="firstname" value="prenom" required/>
-				</div>
-				<div class="mb-3">
-					<label for="lastname" class="form-label h5">Nom</label>
-					<input type="text" class="form-control" name="lastname" value="nom" required/>
-				</div>
-				<div class="mb-3">
-					<label for="add1" class="form-label h5">Adresse</label>
-					<input type="text" class="form-control" name="add1" value="add1" required/>
-				</div>
-				<div class="mb-3">
-					<label for="add2" class="form-label h5">Complément d'adresse</label>
-					<input type="text" class="form-control" name="add2"/>
-				</div>
-				<div class="mb-3">
-					<label for="city" class="form-label h5">Ville</label>
-					<input type="text" class="form-control" name="city" value="city" required/>
-				</div>
-				<div class="mb-3">
-					<label for="postcode" class="form-label h5">Code Postal</label>
-					<input type="text" class="form-control" name="postcode" value="01090" required/>
-				</div>
-				<div class="mb-3">
-					<label for="email" class="form-label h5">Email</label>
-					<input type="text" class="form-control" name="email" value="oui@gmail.com" required/>
-				</div>
-				<input type="submit" name="payer" value="Valider" class="btn btn-outline-primary"/>
-			</form>
+		<h2 class="h2 m-5">Sélectionnez les informations que vous voulez utiliser pour la commande :</h2>
+
+		<div class="row row-cols-2 m-5">
+
+			<div class="col infos-container"> 
+				<h2 class="h2 color6 mt-2">Informations de votre compte</h2>
+				<form method="post" action="#" class="p-5 ps-0 pb-2">
+
+					<div class="mb-3">
+						<label for="lastname" class="form-label h4 mt-0">Nom</label>
+						<p>{{info.surname}}</p>
+					</div>
+
+					<div class="mb-3">
+						<label for="firstname" class="form-label h4 mt-2">Prénom</label>
+						<p>{{info.forname}}</p>
+					</div>
+
+					<div class="mb-3">
+						<label for="email" class="form-label h4 mt-2">Email</label>
+						<p>{{info.email}}</p>
+					</div>
+					
+					<div class="mb-3">
+						<label for="add1" class="form-label h4 mt-2">Adresse</label>
+						<p>{{info.add1}}</p>
+					</div>
+
+					<div class="mb-3">
+						<label for="add2" class="form-label h4 mt-2">Complément d'adresse</label>
+						<p>{{info.add2}}</p>
+					</div>
+
+					<div class="mb-3">
+						<label for="city" class="form-label h4 mt-2">Ville</label>
+						<p>{{info.add3}}</p>
+					</div>
+
+					<div class="mb-3">
+						<label for="postcode" class="form-label h4 mt-2">Code Postal</label>
+						<p>{{info.postcode}}</p>
+					</div>
+					
+					<input type="submit" name="payer_keep" value="Sélectionner ces informataions" class="btn btn-form"/>
+				</form>
+			</div>
+			
+			<div class="col infos-container">
+				<h2 class="h2 color6 mt-2">Nouvelles informations</h2>
+
+				<form method="post" action="#" class="p-5 ps-0 pb-2">
+
+					<div class="mb-3">
+						<label for="lastname" class="form-label h4 mt-0">Nom</label>
+						<input type="text" class="form-control" name="lastname" required/>
+					</div>
+
+					<div class="mb-3">
+						<label for="firstname" class="form-label h4 mt-2">Prénom</label>
+						<input type="text" class="form-control" name="firstname" required/>
+					</div>
+
+					<div class="mb-3">
+						<label for="email" class="form-label h4 mt-2">Email</label>
+						<input type="text" class="form-control" name="email" placeholder="exemple@gmail.com" required/>
+					</div>
+
+					<div class="mb-3">
+						<label for="add1" class="form-label h4 mt-2">Adresse</label>
+						<input type="text" class="form-control" name="add1" required/>
+					</div>
+
+					<div class="mb-3">
+						<label for="add2" class="form-label h4 mt-2">Complément d'adresse</label>
+						<input type="text" class="form-control" name="add2"/>
+					</div>
+
+					<div class="mb-3">
+						<label for="city" class="form-label h4 mt-2">Ville</label>
+						<input type="text" class="form-control" name="city" required/>
+					</div>
+
+					<div class="mb-3">
+						<label for="postcode" class="form-label h4 mt-2">Code Postal</label>
+						<input type="text" class="form-control" name="postcode" required/>
+					</div>
+
+					
+
+					<input type="submit" name="payer" value="Sélectionner ces informations" class="btn btn-form"/>
+				</form>
+			</div>
+		</div>
+
+
 		{% else %}
+
 			<form method="post" action="#" class="p-5 ps-0 pb-2">
 				<div class="mb-3">
 					<label for="firstname" class="form-label h5">Prénom</label>
