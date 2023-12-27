@@ -108,6 +108,8 @@ class ControleurFacture extends FPDF
   function render()
   {
     $this->generateFacture();
+    unset($_SESSION['SESS_ORDERNUM']);
+    unset($_SESSION['order_id']);
   }
 }
 ?>
