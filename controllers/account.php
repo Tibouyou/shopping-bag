@@ -33,10 +33,18 @@ class ControleurAccount
             }
         } elseif (isset($_POST['login'])) {
             $login = $this->account->login($_POST['username'], $_POST['password']);
+            $login_admin = $this->account->login_admin($_POST['username'], $_POST['password']);
             if ($login["success"]) {
                 $_SESSION['logged_in'] = true;
                 $_SESSION['user_id'] = $login["user_id"];
-            } else {
+            } else if ($login_admin["success"]) {
+                $_SESSION['logged_in'] = true;
+                $_SESSION['is_admin'] = true;
+                $_SESSION['user_id'] = $login_admin["user_id"];
+                header('Location: main.php?page=admin');
+                exit();
+            }
+            else {
                 echo("Login failed");
             }
         }

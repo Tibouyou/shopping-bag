@@ -9,6 +9,11 @@ class Accounts extends Modele
         if ($data->rowCount() > 0) {
             return false;
         }
+        $sql = "SELECT username FROM admin WHERE username = '$username'";
+        $data = $this->executerRequete($sql);
+        if ($data->rowCount() > 0) {
+            return false;
+        }
         $sql = "INSERT INTO logins (username, password) VALUES ('$username', '$crypted_password')";
         $this->executerRequete($sql);
         $sql = "INSERT INTO customers ( forname, surname, email, registered) VALUES ('$forname', '$surname', '$email',  1)";
@@ -34,6 +39,9 @@ class Accounts extends Modele
     {
         $sql = "SELECT password FROM logins WHERE username = '$username'";
         $data = $this->executerRequete($sql);
+        if ($data->rowCount() == 0) {
+            return array('success' => false);
+        }
         $result = $data->fetchAll();
         if (password_verify($password, $result[0]['password'])) {
             $sql = "SELECT customer_id FROM logins WHERE username = '$username'";
@@ -50,8 +58,27 @@ class Accounts extends Modele
                 }
             }
             $sql = "SELECT id FROM orders WHERE customer_id = '$user_id' AND status = 0";
-            $order_id = $this->executerRequete($sql)->fetch()['id'];
-            $_SESSION['order_id'] = $order_id;
+            if ($this->executerRequete($sql)->rowCount() > 0) {
+                $order_id = $this->executerRequete($sql)->fetch()['id'];
+                $_SESSION['order_id'] = $order_id;
+            }
+            return array('success' => true, 'user_id' => $user_id);
+        } else {
+            return array('success' => false);
+        }
+    }
+
+    public function login_admin($username, $password)
+    {
+        $sql = "SELECT password FROM admin WHERE username = '$username'";
+        $data = $this->executerRequete($sql);
+        if ($data->rowCount() == 0) {
+            return array('success' => false);
+        }
+        $result = $data->fetchAll();
+        if (password_verify($password, $result[0]['password'])) {
+            $sql = "SELECT id FROM admin WHERE username = '$username'";
+            $user_id = $this->executerRequete($sql)->fetch()['id'];
             return array('success' => true, 'user_id' => $user_id);
         } else {
             return array('success' => false);
