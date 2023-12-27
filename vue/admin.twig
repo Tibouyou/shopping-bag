@@ -21,8 +21,39 @@
 	<body>
 		{%  include 'navbar.twig' %}
 		{%  include 'header.twig' %}
-		<p>admin</p>
+		<div class="accordion" id="accordionExample">
+			{% for order in orders %}
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="heading{{ order.id }}">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ order.id }}">
+							Commande #{{ order.id }}
+						</button>
+					</h2>
+					<div id="collapse{{ order.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ order.id }}">
+						<div class="accordion-body">
+							<p>Commande passée le : {{ order.date }}</p>
+							<p>Payé par : {{ order.payment_type }}</p>
+							<p>Nom : {{ order.lastname }}</p>
+							<p>Prénom : {{ order.firstname }}</p>
+							<p>Adress de livraison : {{ order.add1 }} {{ order.add2 }} {{ order.city }} {{ order.postcode }}</p>
+							<p>Numéro de téléphone : {{ order.phone }}</p>
+							<p>Adresse email : {{ order.email }}</p>
+							<ul>
+								{% for product in order.products %}
+									<li>{{ product.name }}
+										x
+										{{ product.quantity }}</li>
+								{% endfor %}
+							</ul>
+							<form method="POST" action="">
+								<input type="hidden" name="order_id" value="{{ order.id }}"/>
+								<input type="submit" name="validate_order" value="Valider la commande" class="btn btn-outline-primary"/>
+							</form>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
 
-		{%  include 'footer.twig' %}
+			{%  include 'footer.twig' %}</body>
 	</body>
 </html>
