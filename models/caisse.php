@@ -9,6 +9,10 @@ class Caisse extends Modele
             $order_id = $_SESSION['SESS_ORDERNUM'];
             $sql = "UPDATE orders SET delivery_add_id = '$id', status = 1 WHERE id = '$order_id'";
             $this->executerRequete($sql);
+        } elseif (isset($_SESSION['order_id'])) {
+            $order_id = $_SESSION['order_id'];
+            $sql = "UPDATE orders SET delivery_add_id = '$id', status = 1 WHERE id = '$order_id'";
+            $this->executerRequete($sql);
         }
     }
     public function payer($payment_type) {
@@ -16,6 +20,16 @@ class Caisse extends Modele
             $order_id = $_SESSION['SESS_ORDERNUM'];
             $sql = "UPDATE orders SET status = 2, payment_type='$payment_type' WHERE id = '$order_id'";
             $this->executerRequete($sql);
+        } elseif (isset($_SESSION['order_id'])) {
+            $order_id = $_SESSION['order_id'];
+            $sql = "UPDATE orders SET status = 2, payment_type='$payment_type' WHERE id = '$order_id'";
+            $this->executerRequete($sql);
         }
+    }
+
+    public function get_info() {
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT forname, surname, add1, add2, add3, postcode, email FROM customers WHERE id = '$user_id'";
+        return $this->executerRequete($sql)->fetch();
     }
 }

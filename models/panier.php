@@ -12,7 +12,7 @@ class Panier extends Modele
             $user_id = $_SESSION['user_id'];
             $sql = "SELECT * FROM orders O WHERE O.customer_id = '$user_id' AND O.status = 0";
             if ($this->executerRequete($sql)->rowCount() == 0) {
-                $sql = "INSERT INTO orders (customer_id, total) VALUES ('$user_id',0)";
+                $sql = "INSERT INTO orders (customer_id, registered, total) VALUES ('$user_id',1,0)";
                 $this->executerRequete($sql);
                 $_SESSION['order_id'] = $this->getConnexion()->lastInsertId();
             }
