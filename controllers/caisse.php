@@ -27,6 +27,8 @@ class ControleurCaisse
             <?php
             $this->caisse->payer('paypal');
             echo $this->twig->render('paiement.twig', array('is_paid' => true));
+            unset($_SESSION['SESS_ORDERNUM']);
+            unset($_SESSION['order_id']);
         } elseif (isset($_POST['cheque'])) {
             // On active la classe une fois pour toutes les pages suivantes
             // Format portrait (>P) ou paysage (>L), en mm (ou en points > pts), A4 (ou A5, etc.)
