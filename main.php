@@ -12,6 +12,7 @@ $options_dev = array('cache' => false, 'autoescape' => true);
 
 /* stocker la configuration */
 $twig = new Twig\Environment($loader);
+$twig->addGlobal('session', $_SESSION);
 
 /* charger+compiler le template, exécuter, envoyer le résultat au navigateur */
 require 'controllers\routeur.php';
