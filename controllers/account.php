@@ -26,6 +26,7 @@ class ControleurAccount
             if ($user_id != false) {
                 $_SESSION['logged_in'] = true;
                 $_SESSION['user_id'] = $user_id;
+                $_SESSION['username'] = $_POST['username'];
             } else {
                 echo $this->twig->render('register.twig', array(
                     'error' => 'Nom d\'utilisateur déjà utilisé',
@@ -37,6 +38,10 @@ class ControleurAccount
             if ($login["success"]) {
                 $_SESSION['logged_in'] = true;
                 $_SESSION['user_id'] = $login["user_id"];
+                $_SESSION['username'] = $_POST['username'];
+                echo $this->twig->render('account.twig', array(
+                    'account_info' => $this->account->get_account_info()->fetch(),
+                ));
             } else if ($login_admin["success"]) {
                 $_SESSION['logged_in'] = true;
                 $_SESSION['is_admin'] = true;
@@ -47,8 +52,7 @@ class ControleurAccount
             else {
                 echo("Login failed");
             }
-        }
-        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+        } elseif (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             echo $this->twig->render('account.twig', array(
                 'account_info' => $this->account->get_account_info()->fetch(),
             ));

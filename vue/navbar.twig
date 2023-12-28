@@ -26,6 +26,11 @@
 					<a class="nav-link " aria-current="page" href="?page=admin">Administration</a>
 				</li>
 				{% endif %}
+				{% if session.username is defined %}
+				<li class="nav-item">
+					<a class="nav-link " aria-current="page">Bienvenue {{session.username}}</a>
+				</li>
+				{% endif %}
 			</ul>
 
 			<ul class="navbar-nav">
