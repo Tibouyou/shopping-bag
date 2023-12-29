@@ -22,12 +22,14 @@ class ControleurProduit
                 $id = $_POST['product_id'];
                 $nb_quantity = $_POST['nb_quantity'];
                 $this->panier->create_panier($id, $nb_quantity);
+                $toast = true;
             }
             $id = $_GET['id'];
             echo $this->twig->render('produit.twig', array(
                 'product' => $this->product->get_product($id)->fetch(),
                 'avis' => $this->avis->get_avis($id)->fetchAll(), 
-                'moyenne' => $this->avis->get_average($id)->fetch()['moyenne']
+                'moyenne' => $this->avis->get_average($id)->fetch()['moyenne'], 
+                'toast' => $toast ?? false
             ));
         }
         else {

@@ -59,9 +59,19 @@
                 </div>
             </div>
 
-            <h2 class="h2">Avis sur le produit</h2>
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="toastPanier" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Votre produit a bien été ajouté au panier !
+                        </div>
+                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
 
-            
+
+            <h2 class="h2">Avis sur le produit</h2>
             
             <h4 class="h4">Commentaires :</h4>
                 {% for comment in avis %}
@@ -93,4 +103,13 @@
         {%  include 'footer.twig' %}
 
     </body>
+
+    {% if toast == true %}
+        <script>
+            var toastLiveExample = document.getElementById('toastPanier')
+            var toast = new bootstrap.Toast(toastLiveExample)
+            toast.show()
+        </script>
+    {% endif %}
+
 </html>
