@@ -112,8 +112,6 @@
 						<input type="text" class="form-control" name="postcode" required/>
 					</div>
 
-					
-
 					<input type="submit" name="payer" value="Sélectionner ces informations" class="btn btn-form"/>
 				</form>
 			</div>
@@ -121,39 +119,47 @@
 
 
 		{% else %}
+			<form method="post" action="#" class="p-5  pb-2">
 
-			<form method="post" action="#" class="p-5 ps-0 pb-2">
 				<div class="mb-3">
-					<label for="firstname" class="form-label h5">Prénom</label>
-					<input type="text" class="form-control" name="firstname" value="prenom" required/>
+					<label for="lastname" class="form-label h4 mt-0">Nom</label>
+					<input type="text" class="form-control" name="lastname" required/>
 				</div>
+
 				<div class="mb-3">
-					<label for="lastname" class="form-label h5">Nom</label>
-					<input type="text" class="form-control" name="lastname" value="nom" required/>
+					<label for="firstname" class="form-label h4 mt-2">Prénom</label>
+					<input type="text" class="form-control" name="firstname" required/>
 				</div>
+
 				<div class="mb-3">
-					<label for="add1" class="form-label h5">Adresse</label>
-					<input type="text" class="form-control" name="add1" value="add1" required/>
+					<label for="email" class="form-label h4 mt-2">Email</label>
+					<input type="text" class="form-control" name="email" placeholder="exemple@gmail.com" required/>
 				</div>
+
 				<div class="mb-3">
-					<label for="add2" class="form-label h5">Complément d'adresse</label>
+					<label for="add1" class="form-label h4 mt-2">Adresse</label>
+					<input type="text" class="form-control" name="add1" required/>
+				</div>
+
+				<div class="mb-3">
+					<label for="add2" class="form-label h4 mt-2">Complément d'adresse</label>
 					<input type="text" class="form-control" name="add2"/>
 				</div>
+
 				<div class="mb-3">
-					<label for="city" class="form-label h5">Ville</label>
-					<input type="text" class="form-control" name="city" value="city" required/>
+					<label for="city" class="form-label h4 mt-2">Ville</label>
+					<input type="text" class="form-control" name="city" required/>
 				</div>
+
 				<div class="mb-3">
-					<label for="postcode" class="form-label h5">Code Postal</label>
-					<input type="text" class="form-control" name="postcode" value="01090" required/>
+					<label for="postcode" class="form-label h4 mt-2">Code Postal</label>
+					<input type="text" class="form-control" name="postcode" required/>
 				</div>
-				<div class="mb-3">
-					<label for="email" class="form-label h5">Email</label>
-					<input type="text" class="form-control" name="email" value="oui@gmail.com" required/>
-				</div>
-				<input type="submit" name="payer" value="Valider" class="btn btn-outline-primary"/>
+
+				<input type="submit" name="payer" value="Valider mes informations" class="btn btn-form"/>
 			</form>
 		{% endif %}
+
 		{%  include 'footer.twig' %}
 	</body>
 </html>
