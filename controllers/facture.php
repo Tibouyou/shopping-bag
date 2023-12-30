@@ -1,28 +1,41 @@
 <?php
 use Fpdf\Fpdf;
 require_once('models/panier.php');
+require_once('models/caisse.php');
 
 class ControleurFacture extends FPDF
 {
   // Header
   function Header()
   {
-    // Logo : 8 >position à gauche du document (en mm), 2 >position en haut du document, 80 >largeur de l'image en mm). La hauteur est calculée automatiquement.
-    $this->Image('static\img\Milk_and_Mocha_test.jpg', 8, 2);
-    // Saut de ligne 20 mm
-    $this->Ln(20);
+    // Logo : 20 >position à gauche du document (en mm), 15 >position en haut du document, 40 >largeur de l'image en mm). La hauteur est calculée automatiquement.
+    $this->Image('static\img\Milk_and_Mocha_test.jpg', 20, 15, 45);
+    
 
-    // Titre gras (B) police Helbetica de 11
+    // Titre gras (B) police Helvetica de 20
+    $this->SetFont('Helvetica', 'B', 20);
+    // Texte : 0 > largeur de la cellule, 10 >hauteur de la cellule, 'FACTURE' >texte à afficher, 0 >pas de bordure, 1 >retour à la ligne ensuite, R >alignement à droite, 0 >pas de couleur de fond
+    $this->Cell(0, 15, 'FACTURE', 0, 1, 'R', 0);
+
+    // Titre gras (B) police Helvetica de 11
     $this->SetFont('Helvetica', 'B', 11);
-    // fond de couleur gris (valeurs en RGB)
-    $this->setFillColor(230, 230, 230);
-    // position du coin supérieur gauche par rapport à la marge gauche (mm)
-    $this->SetX(70);
-    // Texte : 60 >largeur ligne, 8 >hauteur ligne. Premier 0 >pas de bordure, 1 >retour à la ligneensuite, C >centrer texte, 1> couleur de fond ok  
-    $this->Cell(60, 8, 'Facture', 0, 1, 'C', 1);
-    // Saut de ligne 10 mm
-    $this->Ln(10);
+    // Texte : 0 > largeur de la cellule, 8 >hauteur de la cellule, 'ISI WEB SHOP 4' >texte à afficher, 0 >pas de bordure, 1 >retour à la ligne ensuite, R >alignement à droite, 0 >pas de couleur de fond
+    $this->Cell(0, 8, 'ISI WEB SHOP 4', 0, 1, 'R', 0);
+
+    // Titre police grise Helvetica de 9 pour l'adresse
+    $this->SetFont('Helvetica', '', 9);
+    $this->SetTextColor(128);
+    $this->Cell(0, 6, mb_convert_encoding('15 Boulevard André Latarjet', 'UTF-8', 'ISO-8859-1'), 0, 1, 'R', 0);
+    $this->Cell(0, 6, '69100 Villeurbanne', 0, 1, 'R', 0);
+    $this->Cell(0, 6, 'France', 0, 1, 'R', 0);
+
+    // Titre police Helvetica de 11
+    $this->SetFont('Helvetica', '', 11);
+    $this->SetTextColor(0);
+    // Texte : 0 > largeur de la cellule, 8 >hauteur de la cellule, 'milkandmocha@gmail.com' >texte à afficher, 0 >pas de bordure, 1 >retour à la ligne ensuite, R >alignement à droite, 0 >pas de couleur de fond
+    $this->Cell(0, 8, 'milkandmocha@gmail.com', 0, 1, 'R', 0);
   }
+
   // Footer
   function Footer()
   {
@@ -38,32 +51,64 @@ class ControleurFacture extends FPDF
   {
     // Nouvelle page A4 (incluant ici logo, titre et pied de page)
     $this->AddPage();
+
     // Polices par défaut : Helvetica taille 9
     $this->SetFont('Helvetica', '', 9);
     // Couleur par défaut : noir
     $this->SetTextColor(0);
     // Compteur de pages {nb}
     $this->AliasNbPages();
+
+
     // Sous-titre calées à gauche, texte gras (Bold), police de caractère 11
     $this->SetFont('Helvetica', 'B', 11);
-    // couleur de fond de la cellule : gris clair
-    $this->setFillColor(230, 230, 230);
-    // Cellule avec les données du sous-titre sur 2 lignes, pas de bordure mais couleur de fond grise
-    $this->Cell(75, 6, 'DU ' . 'datedeb' . ' AU ' . 'datefin', 0, 1, 'L', 1);
-    $this->Cell(75, 6, strtoupper('prénom' . ' ' . 'nom'), 0, 1, 'L', 1);
-    $this->Ln(10); // saut de ligne 10mm
+    // couleur de fond de la cellule blanc
+    $this->setFillColor(255, 255, 255);
+    // AFFICHAGE DES INFOS CLIENT
+    $this->Ln(10);
+    $this->info_client();
+
+
+    // Saut de ligne 10 mm
+    $this->Ln(10); 
+
+
+    // AFFICHAGE DU TABLEAU
+    $this->setFillColor(255, 255, 255);
+    $this->SetFont('Helvetica', '', 9);
+    $this->Cell(0, 6, 'Récapitulatif de la commande :', 0, 1, 'L', 1);
+
     // AFFICHAGE EN-TÊTE DU TABLEAU
-    // Position ordonnée de l'entête en valeur absolue par rapport au sommet de la page (60 mm)
-    $position_entete = 70;
+    // Position du tableau 
+    $position_entete = 115;
+    $position = 123;
     // police des caractères
     $this->SetFont('Helvetica', '', 9);
     $this->SetTextColor(0);
     // on affiche les en-têtes du tableau
     $this->entete_table($position_entete);
+
+
     // AFFICHAGE DU DÉTAIL DU TABLEAU
-    $this->panier();
+    $this->panier($position);
     $this->Output('test.pdf', 'I'); // affichage à l'écran
   }
+
+  // Fonction affichage des infos client
+  function info_client()
+  {
+    $caisse = new Caisse();
+    $data = $caisse->get_info_delivery();
+
+    $this->setFont('Helvetica', 'B', 11);
+    $this->Cell(0, 8, 'Facturé à :', 0, 1, 'L', 1);
+
+    $this->setFont('Helvetica', '', 9);
+    $this->Cell(0, 6, $data['firstname'] . ' ' . $data['lastname'], 0, 1, 'L', 1);
+    $this->Cell(0, 6, $data['add1'] . ' ' . $data['add2'], 0, 1, 'L', 1);
+    $this->Cell(0, 6, $data['postcode'] . ' ' . $data['city'], 0, 1, 'L', 1);
+  }
+
   // Fonction en-tête des tableaux en 3 colonnes de largeurs variables
   function entete_table($position_entete)
   {
@@ -76,17 +121,18 @@ class ControleurFacture extends FPDF
     $this->Cell(60, 8, 'Produit', 1, 0, 'C', 1);	// 60 >largeur colonne, 8 >hauteur colonne
     // position de la colonne 2 (70 = 10+60)
     $this->SetX(70);
-    $this->Cell(60, 8, 'Quantité', 1, 0, 'C', 1);
+    $this->Cell(60, 8, mb_convert_encoding('Quantité', 'UTF-8', 'ISO-8859-15'), 1, 0, 'C', 1);
     // position de la colonne 3 (130 = 70+60)
     $this->SetX(130);
-    $this->Cell(30, 8, 'Prix', 1, 0, 'C', 1);
+    $this->Cell(30, 8, 'Prix total', 1, 0, 'C', 1);
 
     $this->Ln(); // Retour à la ligne
   }
-  function panier() {
+
+  function panier($position) {
     $panier = new Panier();
     $data = $panier->get_panier();
-    $position_detail = 78;
+    $position_detail = $position;
     for ($i = 0; $i < count($data); $i++) {
         // position abcisse de la colonne 1 (10mm du bord)
         $this->SetY($position_detail);
@@ -105,6 +151,7 @@ class ControleurFacture extends FPDF
         $position_detail += 8; 
     }
   }
+
   function render()
   {
     $this->generateFacture();

@@ -32,4 +32,16 @@ class Caisse extends Modele
         $sql = "SELECT forname, surname, add1, add2, add3, postcode, email FROM customers WHERE id = '$user_id'";
         return $this->executerRequete($sql)->fetch();
     }
+
+    public function get_info_delivery() {
+        if (isset($_SESSION['SESS_ORDERNUM'])) {
+            $order_id = $_SESSION['SESS_ORDERNUM'];
+            $sql = "SELECT firstname, lastname, add1, add2, city, postcode, email FROM delivery_addresses WHERE id = (SELECT delivery_add_id FROM orders WHERE id = '$order_id')";
+            return $this->executerRequete($sql)->fetch();
+        } elseif (isset($_SESSION['order_id'])) {
+            $order_id = $_SESSION['order_id'];
+            $sql = "SELECT firstname, lastname, add1, add2, city, postcode, email FROM delivery_addresses WHERE id = (SELECT delivery_add_id FROM orders WHERE id = '$order_id')";
+            return $this->executerRequete($sql)->fetch();
+        }
+    }
 }
