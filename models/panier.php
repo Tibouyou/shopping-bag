@@ -51,7 +51,7 @@ class Panier extends Modele
         $this->executerRequete($sql);
         $sql = "SELECT price FROM products WHERE id = '$product_id'";
         $price = $this->executerRequete($sql)->fetch()['price'];
-        $sql = "UPDATE orders SET total = total + '$price' * '$quantity' WHERE id = '$panier_id'";
+        $sql = "UPDATE orders SET total = ROUND(total + '$price' * '$quantity', 2) WHERE id = '$panier_id'";
         $this->executerRequete($sql);
     }
 
@@ -69,7 +69,7 @@ class Panier extends Modele
         $sql = "SELECT price FROM products WHERE id = (SELECT product_id FROM orderitems WHERE id = '$orderitem_id')";
         $price = $this->executerRequete($sql)->fetch()['price'];
 
-        $sql = "UPDATE orders SET total = total - '$price' * '$old_quantity' + '$price' * '$new_quantity' WHERE id = '$order_id'";
+        $sql = "UPDATE orders SET total = ROUND(total + '$price' * ('$new_quantity' - '$old_quantity'), 2) WHERE id = '$order_id'"; 
         $this->executerRequete($sql);
 
         if ($new_quantity == 0) {
