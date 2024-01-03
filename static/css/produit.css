@@ -60,3 +60,7 @@
     transform: scale(1.05);
     box-shadow: 0px 0px 10px 0px var(--color6);
 }
+
+.toast-container{
+    z-index: 1000 !important;
+}
