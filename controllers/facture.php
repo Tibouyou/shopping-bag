@@ -111,12 +111,12 @@ class ControleurFacture extends FPDF
     $data = $caisse->get_info_delivery();
 
     $this->setFont('Helvetica', 'B', 11);
-    $this->Cell(0, 8, utf8_decode('Facturé à :'), 0, 1, 'L', 1);
+    $this->Cell(0, 8, mb_convert_encoding('Facturé à :', 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
 
     $this->setFont('Helvetica', '', 9);
-    $this->Cell(0, 6, utf8_decode($data['firstname'] . ' ' . $data['lastname']), 0, 1, 'L', 1);
-    $this->Cell(0, 6, utf8_decode($data['add1'] . ' ' . $data['add2']), 0, 1, 'L', 1);
-    $this->Cell(0, 6, utf8_decode($data['postcode'] . ' ' . $data['city']), 0, 1, 'L', 1);
+    $this->Cell(0, 6, mb_convert_encoding($data['firstname'] . ' ' . $data['lastname'], 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
+    $this->Cell(0, 6, mb_convert_encoding($data['add1'] . ' ' . $data['add2'], 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
+    $this->Cell(0, 6, mb_convert_encoding($data['postcode'] . ' ' . $data['city'], 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
   }
 
   // Fonction en-tête des tableaux en 3 colonnes de largeurs variables
@@ -131,7 +131,7 @@ class ControleurFacture extends FPDF
     $this->Cell(60, 8, 'Produit', 1, 0, 'C', 1);	// 60 >largeur colonne, 8 >hauteur colonne
     // position de la colonne 2 (70 = 10+60)
     $this->SetX(70);
-    $this->Cell(30, 8, utf8_decode('Quantité'), 1, 0, 'C', 1);
+    $this->Cell(30, 8, mb_convert_encoding('Quantité', 'ISO-8859-1', 'UTF-8'), 1, 0, 'C', 1);
     // position de la colonne 3 (130 = 70+30)
     $this->SetX(100);
     $this->Cell(60, 8, iconv('UTF-8', 'windows-1252', 'Prix total pour chaque article (€)'), 1, 0, 'C', 1); 
@@ -147,15 +147,15 @@ class ControleurFacture extends FPDF
         // position abcisse de la colonne 1 (10mm du bord)
         $this->SetY($position_detail);
         $this->SetX(10);
-        $this->MultiCell(60, 8, utf8_decode($data[$i]['name']), 1, 'C');
+        $this->MultiCell(60, 8, mb_convert_encoding($data[$i]['name'], 'ISO-8859-1', 'UTF-8'), 1, 'C');
         // position abcisse de la colonne 2 (70 = 10 + 60)	
         $this->SetY($position_detail);
         $this->SetX(70); 
-        $this->MultiCell(30, 8, utf8_decode($data[$i]['quantity']), 1, 'C');
+        $this->MultiCell(30, 8, mb_convert_encoding($data[$i]['quantity'], 'ISO-8859-1', 'UTF-8'), 1, 'C');
         // position abcisse de la colonne 3 (130 = 70+ 60)
         $this->SetY($position_detail);
         $this->SetX(100); 
-        $this->MultiCell(60, 8, utf8_decode($data[$i]['price']), 1, 'C');
+        $this->MultiCell(60, 8, mb_convert_encoding($data[$i]['price'], 'ISO-8859-1', 'UTF-8'), 1, 'C');
     
         // on incrémente la position ordonnée de la ligne suivante (+8mm = hauteur des cellules)	
         $position_detail += 8; 
@@ -185,23 +185,23 @@ class ControleurFacture extends FPDF
   function instruction_paiement() {
     $this->SetFont('Helvetica', 'B', 20);
     $this->Ln(15);
-    $this->Cell(0, 15, utf8_decode('Instructions pour le paiement par chèque'), 0, 1, 'L', 1);
+    $this->Cell(0, 15, mb_convert_encoding('Instructions pour le paiement par chèque', 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
 
     $this->SetFont('Helvetica', '', 9);
-    $this->Write(6, utf8_decode('Nous vous remercions de votre choix de régler votre transaction par chèque. Afin de garantir un traitement rapide et efficace de votre paiement, veuillez adresser votre chèque à la société Milk and Mocha du montant indiqué après la case total du récapitulatif de la commande.'));
+    $this->Write(6, mb_convert_encoding('Nous vous remercions de votre choix de régler votre transaction par chèque. Afin de garantir un traitement rapide et efficace de votre paiement, veuillez adresser votre chèque à la société Milk and Mocha du montant indiqué après la case total du récapitulatif de la commande.', 'ISO-8859-1', 'UTF-8'));
     $this->Ln(10);
-    $this->Write(6, utf8_decode("Veuillez envoyer le chèque par voie postale à l'adresse suivante :"));
+    $this->Write(6, mb_convert_encoding("Veuillez envoyer le chèque par voie postale à l'adresse suivante :", 'ISO-8859-1', 'UTF-8'));
     $this->Ln(10);
-    $this->Cell(0, 6, utf8_decode("15 Boulevard André Latarjet"), 0, 1, 'L', 0);
+    $this->Cell(0, 6, mb_convert_encoding("15 Boulevard André Latarjet", 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 0);
     $this->Cell(0, 6, '69100 Villeurbanne', 0, 1, 'L', 0);
     $this->Cell(0, 6, 'France', 0, 1, 'L', 0);
 
     $this->Ln(10);
-    $this->Write(6, utf8_decode("Il est important de noter que le chèque doit être libellé à l'ordre du bénéficiaire spécifié ci-dessus. Assurez-vous également d'inclure toute information supplémentaire requise, telle que la référence de la facture, afin d'assurer un traitement précis de votre paiement."));
+    $this->Write(6, mb_convert_encoding("Il est important de noter que le chèque doit être libellé à l'ordre du bénéficiaire spécifié ci-dessus. Assurez-vous également d'inclure toute information supplémentaire requise, telle que la référence de la facture, afin d'assurer un traitement précis de votre paiement.", 'ISO-8859-1', 'UTF-8'));
     $this->Ln(10);
-    $this->Write(6, utf8_decode("Nous vous recommandons d'envoyer le chèque par courrier recommandé ou avec suivi pour garantir sa sécurité pendant le transit. Une fois que le paiement aura été reçu et traité, nous vous enverrons une confirmation par e-mail."));
+    $this->Write(6, mb_convert_encoding("Nous vous recommandons d'envoyer le chèque par courrier recommandé ou avec suivi pour garantir sa sécurité pendant le transit. Une fois que le paiement aura été reçu et traité, nous vous enverrons une confirmation par e-mail.", 'ISO-8859-1', 'UTF-8'));
     $this->Ln(10);
-    $this->Write(6, utf8_decode("Nous vous remercions de votre coopération et restons à votre disposition pour toute question supplémentaire. Veuillez nous contacter par e-mail à milkandmocha@gmail.com si vous avez besoin d'assistance."));
+    $this->Write(6, mb_convert_encoding("Nous vous remercions de votre coopération et restons à votre disposition pour toute question supplémentaire. Veuillez nous contacter par e-mail à milkandmocha@gmail.com si vous avez besoin d'assistance.", 'ISO-8859-1', 'UTF-8'));
   }
 
   function render()
