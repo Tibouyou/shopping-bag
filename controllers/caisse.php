@@ -17,6 +17,10 @@ class ControleurCaisse
             echo $this->twig->render('paiement.twig', array('is_paid' => false));
         } elseif (isset($_POST['payer_keep'])) {
             $info = $this->caisse->get_info();
+            if ($info['add1'] == null || $info['add3'] == null || $info['postcode'] == null) {
+                echo $this->twig->render('info_achat.twig', array('is_logged' => true, "info" => $info, 'error' => true));
+                return;
+            }
             $this->caisse->set_adress($info['forname'], $info['surname'], $info['add1'], $info['add2'], $info['add3'], $info['postcode'], $info['email']);
             echo $this->twig->render('paiement.twig', array('is_paid' => false));
         } elseif (isset($_POST['paypal'])) {
@@ -44,7 +48,13 @@ class ControleurCaisse
             echo $this->twig->render('paiement.twig', array('is_paid' => true));
         } else {
             if (isset($_SESSION['logged_in'])) {
-                echo $this->twig->render('info_achat.twig', array('is_logged' => true, "info" => $this->caisse->get_info()));
+                $info = $this->caisse->get_info();
+                if ($info['add1'] == null || $info['add3'] == null || $info['postcode'] == null) {
+                    echo $this->twig->render('info_achat.twig', array('is_logged' => true, "info" => $info, 'error' => true));
+                    return;
+                } else {
+                    echo $this->twig->render('info_achat.twig', array('is_logged' => true, "info" => $info, 'error' => false));
+                }
             } else {
                 echo $this->twig->render('info_achat.twig', array('is_logged' => false));
             }    

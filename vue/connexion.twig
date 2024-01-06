@@ -24,9 +24,14 @@
 		<div class="ps-5">
 			<h1 class="h1 mt-5">Identification client</h1>
 			<p class="h5 mt-3">Veuillez vous identifier pour accéder à votre compte. Si vous n'en n'avez pas encore, vous pouvez en créer un gratuitement.</p>
-
-			<form method="post" action="#" class="p-5 ps-0 pb-2">
-
+			{% if error %}
+				<div class="alert alert-danger" role="alert">
+					{{ error }}
+				</div>
+				<form method="post" action="#" class="p-5 ps-0 pb-2 pt-0">
+			{% else %}
+				<form method="post" action="#" class="p-5 ps-0 pb-2">
+			{% endif %}
 				<div class="mb-3">
 					<label for="exampleInputEmail1" class="form-label h5">Nom d'utilisateur</label>
 					<input type="text" class="form-control form-control-connexion" name="username" required/>
