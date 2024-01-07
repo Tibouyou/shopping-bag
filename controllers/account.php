@@ -50,7 +50,9 @@ class ControleurAccount
                 exit();
             }
             else {
-                echo("Login failed");
+                echo $this->twig->render('connexion.twig', array(
+                    'error' => 'Nom d\'utilisateur ou mot de passe incorrect',
+                ));
             }
         } elseif (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             echo $this->twig->render('account.twig', array(
