@@ -25,7 +25,7 @@ class ControleurFacture extends FPDF
     // Titre police grise Helvetica de 9 pour l'adresse
     $this->SetFont('Helvetica', '', 9);
     $this->SetTextColor(128);
-    $this->Cell(0, 6, utf8_decode('15 Boulevard André Latarjet'), 0, 1, 'R', 0);
+    $this->Cell(0, 6, mb_convert_encoding('15 Boulevard André Latarjet', 'ISO-8859-1', 'UTF-8'), 0, 1, 'R', 0);
     $this->Cell(0, 6, '69100 Villeurbanne', 0, 1, 'R', 0);
     $this->Cell(0, 6, 'France', 0, 1, 'R', 0);
 
@@ -76,7 +76,7 @@ class ControleurFacture extends FPDF
     // AFFICHAGE DU TABLEAU
     $this->setFillColor(255, 255, 255);
     $this->SetFont('Helvetica', '', 9);
-    $this->Cell(0, 6, utf8_decode('Récapitulatif de la commande :'), 0, 1, 'L', 1);
+    $this->Cell(0, 6, mb_convert_encoding('Récapitulatif de la commande :', 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
 
     // AFFICHAGE EN-TÊTE DU TABLEAU
     // Position du tableau 
