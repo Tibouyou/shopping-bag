@@ -28,3 +28,9 @@
     transform: scale(1.05);
     transition: 0.3s;
 }
+
+/*Styles pour les erreurs des formulaires*/
+
+.alert-danger{
+    width: fit-content !important;
+}

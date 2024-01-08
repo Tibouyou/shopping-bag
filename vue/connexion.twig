@@ -25,24 +25,24 @@
 			<h1 class="h1 mt-5">Identification client</h1>
 			<p class="h5 mt-3">Veuillez vous identifier pour accéder à votre compte. Si vous n'en n'avez pas encore, vous pouvez en créer un gratuitement.</p>
 			{% if error %}
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-danger my-4" role="alert">
 					{{ error }}
 				</div>
 				<form method="post" action="#" class="p-5 ps-0 pb-2 pt-0">
 			{% else %}
 				<form method="post" action="#" class="p-5 ps-0 pb-2">
 			{% endif %}
-				<div class="mb-3">
-					<label for="exampleInputEmail1" class="form-label h5">Nom d'utilisateur</label>
-					<input type="text" class="form-control form-control-connexion" name="username" required/>
-				</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label h5">Nom d'utilisateur</label>
+						<input type="text" class="form-control form-control-connexion" name="username" required/>
+					</div>
 
-				<div class="mb-3">
-					<label for="exampleInputPassword1" class="form-label h5">Mot de passe</label>
-					<input type="password" class="form-control form-control-connexion" name="password" required>
-				</div>
-				<input type="submit" name="login" value="Se connecter" class="btn btn-outline-primary"/>
-			</form>
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label h5">Mot de passe</label>
+						<input type="password" class="form-control form-control-connexion" name="password" required>
+					</div>
+					<input type="submit" name="login" value="Se connecter" class="btn btn-outline-primary"/>
+				</form>
 
 			<div class="d-flex">
 				<h5 class="h5 mt-2 pe-2">Vous n'avez pas encore de compte ?</h5>
