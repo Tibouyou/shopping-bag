@@ -56,7 +56,6 @@
 .maison-container{
     margin: 0vh 10vw 5vh 60vw !important;
     padding-top: 20vh !important;
-    position: relative;
 }
 
 .titre-maison-accueil{
@@ -65,17 +64,17 @@
     color: var(--color1) !important;
     background-color: var(--color4) !important;
     padding: 1vh 1vw 2vh 1vw !important;
-    width: fit-content !important;
-    position: absolute;
+    margin-bottom: 0vh !important;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
 }
 
 .texte-maison-accueil{
     color: var(--color4) !important;
     background-color: var(--color1) !important;
-    padding: 5vh 1vw 1vh 1vw !important; 
-    margin: 7vh 0vw 0vh 4vw !important;
-    width: 25vw !important;
-    
+    padding: 1vw !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
 }
 
 .parallax {
