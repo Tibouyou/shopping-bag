@@ -1,5 +1,9 @@
 /*Styles pour le panier*/
 
+.panier-container{
+    min-height: 20vh;
+}
+
 .card-panier{
     border: 1px solid var(--color6) !important;
 }
