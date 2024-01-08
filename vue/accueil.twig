@@ -65,7 +65,7 @@
                         <div class="slider">
                             <div class="mask">
                                 <ul>
-                                    {% for commentaire in avis | slice(0,5) %}
+                                    {% for commentaire in avis | slice(0,7) %}
                                     <li class="anim{{commentaire.id_review}}">
                                         <div class="titre-avis">{{commentaire.title}}</div>
                                         <div class="text-avis">{{commentaire.description}}</div>
