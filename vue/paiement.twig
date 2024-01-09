@@ -22,22 +22,24 @@
 		{%  include 'navbar.twig' %}
 		{%  include 'header.twig' %}
 
-		{% if is_paid == false %}
-		<div class="ps-5 text-center">
-			<h1 class="h1 mt-5">Choississez votre moyen de paiement</h1>
+		<div class="paiement-container">
+			{% if is_paid == false %}
+			<div class="ps-5 text-center">
+				<h1 class="h1 mt-5">Choississez votre moyen de paiement</h1>
 
-			<form method="POST" action="" class="p-5 m-5">
-				<button type="submit" name="paypal" class="btn btn-form-choice me-4">Paypal</button>
-				<button type="submit" name="cheque" class="btn btn-form-choice ms-4">Chèque</button>
-			</form>
+				<form method="POST" action="" class="p-5 m-5">
+					<button type="submit" name="paypal" class="btn btn-form-choice me-4">Paypal</button>
+					<button type="submit" name="cheque" class="btn btn-form-choice ms-4">Chèque</button>
+				</form>
+			</div>
+				
+			{% else %}
+				<h1 class="h1 mt-5 ps-5">Votre commande a bien été prise en compte</h1>
+				<p class="h5 mt-3 ps-5">Vous pouvez continuer à naviguer sur notre site.</p>
+
+				<a href="?page=produits" class="btn btn-form mt-5 ms-5">Continuer mes achats</a>
+			{% endif %}
 		</div>
-			
-		{% else %}
-			<h1 class="h1 mt-5 ps-5">Votre commande a bien été prise en compte</h1>
-			<p class="h5 mt-3 ps-5">Vous pouvez continuer à naviguer sur notre site.</p>
-
-			<a href="?page=produits" class="btn btn-form mt-5 ms-5">Continuer mes achats</a>
-		{% endif %}
 
 		{%  include 'footer.twig' %}
 	</body>
