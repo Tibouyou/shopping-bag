@@ -5,6 +5,7 @@ require_once('models/caisse.php');
 
 class ControleurFacture extends FPDF
 {
+  private $caisse = new Caisse();
   // Header
   function Header()
   {
@@ -107,8 +108,8 @@ class ControleurFacture extends FPDF
   // Fonction affichage des infos client
   function info_client()
   {
-    $caisse = new Caisse();
-    $data = $caisse->get_info_delivery();
+    
+    $data = $this->caisse->get_info_delivery();
 
     $this->setFont('Helvetica', 'B', 11);
     $this->Cell(0, 8, mb_convert_encoding('Facturé à :', 'ISO-8859-1', 'UTF-8'), 0, 1, 'L', 1);
