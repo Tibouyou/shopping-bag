@@ -27,6 +27,9 @@ class ControleurAccount
                 $_SESSION['logged_in'] = true;
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $_POST['username'];
+                echo $this->twig->render('account.twig', array(
+                    'account_info' => $this->account->get_account_info()->fetch(),
+                ));
             } else {
                 echo $this->twig->render('register.twig', array(
                     'error' => 'Nom d\'utilisateur déjà utilisé',

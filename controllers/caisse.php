@@ -28,14 +28,19 @@ class ControleurCaisse
             <script type="text/javascript">
                 window.open('https://www.paypal.com/', '_blank');
             </script>
+            <script type="text/javascript">
+                var pdfPage = window.open('main.php?page=facture');
+                $(pdfPage).bind('beforeunload', function () {
+                    location.reload(); // redirect to your custom page
+                });
+            </script>
             <?php
             $this->caisse->payer('paypal');
             echo $this->twig->render('paiement.twig', array('is_paid' => true));
-            unset($_SESSION['SESS_ORDERNUM']);
-            unset($_SESSION['order_id']);
         } elseif (isset($_POST['cheque'])) {
             // On active la classe une fois pour toutes les pages suivantes
             // Format portrait (>P) ou paysage (>L), en mm (ou en points > pts), A4 (ou A5, etc.)
+            $_SESSION['cheque'] = true;
             ?>
             <script type="text/javascript">
                 var pdfPage = window.open('main.php?page=facture');

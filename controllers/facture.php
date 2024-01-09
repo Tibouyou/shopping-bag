@@ -97,10 +97,10 @@ class ControleurFacture extends FPDF
     //AFFICHAGE DES INSTRUCTIONS SUR LA PAGE SUIVANTE
     $this->SetFont('Helvetica', '', 9);
     $this->SetTextColor(0);
-    $this->AddPage();
-    $this->instruction_paiement();
-
-
+    if (isset($_SESSION['cheque']) && $_SESSION['cheque'] == true) {
+      $this->AddPage();
+      $this->instruction_paiement();
+    }
     $this->Output('test.pdf', 'I'); // affichage à l'écran
   }
 
@@ -209,6 +209,7 @@ class ControleurFacture extends FPDF
     $this->generateFacture();
     unset($_SESSION['SESS_ORDERNUM']);
     unset($_SESSION['order_id']);
+    unset($_SESSION['cheque']);
   }
 }
 ?>
