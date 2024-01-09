@@ -7,6 +7,10 @@
     border-radius : 5px;
 }
 
+.paiement-container {
+    min-height: 25vh;
+}
+
 .btn-form{
     border: 2px solid var(--color6) !important;
     color: var(--color6) !important;

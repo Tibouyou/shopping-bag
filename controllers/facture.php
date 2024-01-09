@@ -9,7 +9,7 @@ class ControleurFacture extends FPDF
   function Header()
   {
     // Logo : 20 >position à gauche du document (en mm), 15 >position en haut du document, 40 >largeur de l'image en mm). La hauteur est calculée automatiquement.
-    $this->Image('static\img\Milk_and_Mocha_test.jpg', 20, 15, 45);
+    $this->Image('static\img\Milk_and_Mocha_logo.jpg', 20, 15, 45);
     
 
     // Titre gras (B) police Helvetica de 20

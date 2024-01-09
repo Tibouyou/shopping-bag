@@ -7,7 +7,7 @@ class PDF extends FPDF
   function Header()
   {
     // Logo : 8 >position à gauche du document (en mm), 2 >position en haut du document, 80 >largeur de l'image en mm). La hauteur est calculée automatiquement.
-    $this->Image('static\img\Milk_and_Mocha_test.jpg', 8, 2);
+    $this->Image('static\img\Milk_and_Mocha_logo.jpg', 8, 2);
     // Saut de ligne 20 mm
     $this->Ln(20);
 
