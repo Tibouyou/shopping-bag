@@ -5,7 +5,15 @@ require_once('models/caisse.php');
 
 class ControleurFacture extends FPDF
 {
-  private $caisse = new Caisse();
+
+  private $caisse;
+
+  public function __construct()
+  {
+    $this->caisse = new Caisse();
+    parent::__construct();
+  }
+
   // Header
   function Header()
   {
